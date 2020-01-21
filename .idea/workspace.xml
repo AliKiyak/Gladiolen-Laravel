@@ -7,7 +7,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
@@ -117,8 +117,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/Laravel projecten/laravel-6-beginner" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Realisatiefase\gladiolen-backend\app\Http\Controllers" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -148,7 +154,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1579599221466</updated>
-      <workItem from="1579599225071" duration="9273000" />
+      <workItem from="1579599225071" duration="17714000" />
+      <workItem from="1579630716972" duration="7887000" />
     </task>
     <servers />
   </component>
@@ -156,9 +163,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="549" y="172" key="FileChooserDialogImpl" timestamp="1579637293096">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.832/9.-1080.1920.1050@0.0.1536.832" timestamp="1579637293096" />
+    <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.832@0.0.1536.832" timestamp="1579615997147" />
+    <state x="279" y="62" key="SettingsEditor" timestamp="1579611879001">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state x="279" y="62" key="SettingsEditor/0.0.1536.832@0.0.1536.832" timestamp="1579611879001" />
     <state x="474" y="50" width="588" height="732" key="find.popup" timestamp="1579609283455">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state x="474" y="50" width="588" height="732" key="find.popup/0.0.1536.832@0.0.1536.832" timestamp="1579609283455" />
+    <state x="431" y="153" width="672" height="678" key="search.everywhere.popup" timestamp="1579637253571">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state x="431" y="153" width="672" height="678" key="search.everywhere.popup/0.0.1536.832/9.-1080.1920.1050@0.0.1536.832" timestamp="1579637253571" />
   </component>
 </project>

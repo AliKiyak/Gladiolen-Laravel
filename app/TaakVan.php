@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class TaakVan extends Model
 {
-    //
+    public $timestamps = false;
+
 }

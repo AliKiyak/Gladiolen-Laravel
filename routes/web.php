@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/tshirts', 'TshirtController@index');
+
+
+
+// GebruikerController Routes
+Route::post('/gebruiker', 'GebruikerController@registreer');

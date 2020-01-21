@@ -17,7 +17,7 @@ class CreateVerenigingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('naam');
             $table->unsignedBigInteger('hoofdverantwoordelijke');
-            $table->unsignedBigInteger('2deverantwoordelijke');
+            $table->unsignedBigInteger('2deverantwoordelijke')->nullable();
             $table->string('rekeningnr');
             $table->string('btwnr');
             $table->string('straat');
