@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTijdsregistratiesTable extends Migration
+class CreateGebruikerVerenigingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateTijdsregistratiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tijdsregistraties', function (Blueprint $table) {
+        Schema::create('gebruiker_vereniging', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->dateTime('checkIn')->nullable();
-            $table->dateTime('checkUit')->nullable();
+            $table->unsignedBigInteger('vereniging_id');
             $table->unsignedBigInteger('gebruiker_id');
-            //$table->foreign('gebruikerId')->references('id')->on('gebruikers')->onDelete('cascade')->onUpdate('cascade');
         });
-
     }
 
     /**
@@ -30,6 +27,6 @@ class CreateTijdsregistratiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tijdsregistraties');
+        Schema::dropIfExists('gebruiker_vereniging');
     }
 }

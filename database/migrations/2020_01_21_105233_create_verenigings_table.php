@@ -17,7 +17,7 @@ class CreateVerenigingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('naam');
             $table->unsignedBigInteger('hoofdverantwoordelijke');
-            $table->unsignedBigInteger('2deverantwoordelijke')->nullable();
+            $table->unsignedBigInteger('tweedeverantwoordelijke')->nullable();
             $table->string('rekeningnr');
             $table->string('btwnr');
             $table->string('straat');
@@ -25,8 +25,8 @@ class CreateVerenigingsTable extends Migration
             $table->string('gemeente');
             $table->string('postcode');
 
-            $table->foreign('hoofdverantwoordelijke')->references('id')->on('gebruikers')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('2deverantwoordelijke')->references('id')->on('verenigings')->onDelete('cascade')->onUpdate('cascade');
+            //$table->foreign('hoofdverantwoordelijke')->references('id')->on('gebruikers')->onDelete('cascade')->onUpdate('cascade');
+            //$table->foreign('2deverantwoordelijke')->references('id')->on('verenigings')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

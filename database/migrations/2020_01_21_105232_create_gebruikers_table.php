@@ -33,8 +33,8 @@ class CreateGebruikersTable extends Migration
             $table->boolean('actief')->nullable();
             $table->string('qrcode')->nullable();
             $table->string('foto')->nullable();
-            $table->unsignedBigInteger('tshirtId')->nullable();
-            $table->unsignedBigInteger('rolId');
+            $table->unsignedBigInteger('tshirt_id')->nullable();
+            $table->unsignedBigInteger('rol_id')->nullable();
 
             // $table->foreign('tshirtId')->references('id')->on('tshirts')->onDelete('cascade')->onUpdate('cascade');
             // $table->foreign('rolId')->references('id')->on('rols')->onDelete('cascade')->onUpdate('cascade');

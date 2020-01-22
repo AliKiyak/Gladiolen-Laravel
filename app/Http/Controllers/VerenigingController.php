@@ -6,5 +6,12 @@ use Illuminate\Http\Request;
 
 class VerenigingController extends Controller
 {
-    //
+    public function registreer(Request $request) {
+        $data = $request->all();
+
+        $vereniging = \App\Vereniging::create($data);
+        $vereniging->save();
+
+        return response()->json($vereniging);
+    }
 }

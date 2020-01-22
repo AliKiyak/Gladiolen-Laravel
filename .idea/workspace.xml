@@ -117,7 +117,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/Laravel projecten/laravel-6-beginner" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -155,7 +155,8 @@
       <option name="presentableId" value="Default" />
       <updated>1579599221466</updated>
       <workItem from="1579599225071" duration="17714000" />
-      <workItem from="1579630716972" duration="7887000" />
+      <workItem from="1579630716972" duration="12771000" />
+      <workItem from="1579674643520" duration="12028000" />
     </task>
     <servers />
   </component>
@@ -168,6 +169,10 @@
     </state>
     <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.832/9.-1080.1920.1050@0.0.1536.832" timestamp="1579637293096" />
     <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.832@0.0.1536.832" timestamp="1579615997147" />
+    <state x="349" y="152" key="IDE.errors.dialog" timestamp="1579641719305">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state x="349" y="152" key="IDE.errors.dialog/0.0.1536.832/9.-1080.1920.1050@0.0.1536.832" timestamp="1579641719305" />
     <state x="279" y="62" key="SettingsEditor" timestamp="1579611879001">
       <screen x="0" y="0" width="1536" height="832" />
     </state>

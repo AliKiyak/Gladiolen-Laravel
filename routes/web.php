@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $gebruikers = \App\Gebruiker::with('rol')->get();
+    dd($gebruikers);
 });
 
 Route::get('/tshirts', 'TshirtController@index');
@@ -21,3 +22,7 @@ Route::get('/tshirts', 'TshirtController@index');
 
 // GebruikerController Routes
 Route::post('/gebruiker', 'GebruikerController@registreer');
+
+
+// VerenigingController Routes
+Route::post('/vereniging', 'VerenigingController@registreer');
