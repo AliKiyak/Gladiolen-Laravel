@@ -16,14 +16,20 @@ Route::get('/', function () {
     dd($gebruikers);
 });
 
+// TshirtController Routes
 Route::get('/tshirts', 'TshirtController@index');
 
 // GebruikerController Routes
 Route::post('/gebruiker', 'GebruikerController@registreer');
-
-// VerenigingController Routes
-Route::post('/vereniging', 'VerenigingController@registreer');
+Route::post('/addlid', 'GebruikerController@addLid');
+Route::delete('/deletelid', 'GebruikerController@deleteLid');
+Route::get('/getlid', 'GebruikerController@getLid');
 
 // EvenementController Routes
 Route::get('/evenement', 'EvenementController@index');
 Route::post('/evenement', 'EvenementController@registreer');
+
+// VerenigingController Routes
+Route::post('/vereniging', 'VerenigingController@registreer');
+Route::get('/eigenleden', 'VerenigingController@getLedenVanEigenVereniging');
+

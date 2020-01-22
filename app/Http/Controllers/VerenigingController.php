@@ -14,4 +14,11 @@ class VerenigingController extends Controller
 
         return response()->json($vereniging);
     }
+
+    public function getLedenVanEigenVereniging() {
+        $vereniging = \App\Vereniging::with('gebruikers')->where('hoofdverantwoordelijke', 1)->first();
+
+        return response()->json($vereniging);
+    }
+
 }

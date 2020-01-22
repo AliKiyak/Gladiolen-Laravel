@@ -26,4 +26,29 @@ class GebruikerController extends Controller
         return response()->json($gebruiker);
     }
 
+    public function getLid(Request $request) {
+        $id = $request->input('id');
+
+        $lid = \App\Gebruiker::find($id);
+
+        return response()->json($lid);
+    }
+    public function addLid(Request $request) {
+        $data = $request->all();
+
+        $gebruiker = \App\Gebruiker::create($data);
+
+        // INGELOGDE HOOFDVERANTWOORDELIJKE REGELEN
+        $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', 1)->first();
+
+        $vereniging->gebruikers()->save($gebruiker);
+
+        return response()->json($gebruiker);
+    }
+
+    public function deleteLid(Request $request) {
+        $id = $request->input('id');
+        $lid = \App\Gebruiker::find($id);
+        $lid->delete();
+    }
 }

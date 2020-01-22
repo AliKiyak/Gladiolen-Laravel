@@ -27,7 +27,7 @@ class CreateGebruikersTable extends Migration
             $table->string('opmerking');
             $table->string('rijksregisternr');
             $table->string('postcode');
-            $table->string('wachtwoord');
+            $table->string('wachtwoord')->nullable();
             $table->boolean('eersteAanmelding');
             $table->boolean('lunchpakket');
             $table->boolean('actief')->nullable();
