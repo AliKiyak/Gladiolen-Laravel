@@ -18,11 +18,12 @@ Route::get('/', function () {
 
 Route::get('/tshirts', 'TshirtController@index');
 
-
-
 // GebruikerController Routes
 Route::post('/gebruiker', 'GebruikerController@registreer');
 
-
 // VerenigingController Routes
 Route::post('/vereniging', 'VerenigingController@registreer');
+
+// EvenementController Routes
+Route::get('/evenement', 'EvenementController@index');
+Route::post('/evenement', 'EvenementController@registreer');
