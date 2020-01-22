@@ -22,8 +22,9 @@ Route::get('/tshirts', 'TshirtController@index');
 // GebruikerController Routes
 Route::post('/gebruiker', 'GebruikerController@registreer');
 Route::post('/addlid', 'GebruikerController@addLid');
-Route::delete('/deletelid', 'GebruikerController@deleteLid');
-Route::get('/getlid', 'GebruikerController@getLid');
+Route::delete('/deletelid/{id}', 'GebruikerController@deleteLid');
+Route::get('/getlid/{id}', 'GebruikerController@getLid');
+Route::put('/updatelid/{id}', 'GebruikerController@updateLid');
 
 // EvenementController Routes
 Route::get('/evenement', 'EvenementController@index');

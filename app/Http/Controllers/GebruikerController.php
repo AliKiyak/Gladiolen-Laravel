@@ -26,9 +26,7 @@ class GebruikerController extends Controller
         return response()->json($gebruiker);
     }
 
-    public function getLid(Request $request) {
-        $id = $request->input('id');
-
+    public function getLid($id) {
         $lid = \App\Gebruiker::find($id);
 
         return response()->json($lid);
@@ -37,6 +35,8 @@ class GebruikerController extends Controller
         $data = $request->all();
 
         $gebruiker = \App\Gebruiker::create($data);
+        $rol = \App\Gebruiker::find(4);
+        $gebruiker->rol()->associate($rol);
 
         // INGELOGDE HOOFDVERANTWOORDELIJKE REGELEN
         $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', 1)->first();
@@ -46,9 +46,15 @@ class GebruikerController extends Controller
         return response()->json($gebruiker);
     }
 
-    public function deleteLid(Request $request) {
-        $id = $request->input('id');
+    public function deleteLid($id) {
         $lid = \App\Gebruiker::find($id);
         $lid->delete();
+    }
+
+    public function updateLid($id, Request $request) {
+        $data = $request->all();
+        $gebruiker = \App\Gebruiker::find($id)->update($data);
+
+        return response()->json($gebruiker);
     }
 }
