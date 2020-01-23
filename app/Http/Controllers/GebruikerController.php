@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class GebruikerController extends Controller
 {
-    public function registreer(gebruikerRegistratieRequest $request) {
+    public function registreerVerantwoordelijke(gebruikerRegistratieRequest $request) {
 
         $data = $request->all();
         settype($data['tshirt_id'], 'integer');

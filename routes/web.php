@@ -20,7 +20,7 @@ Route::get('/', function () {
 Route::get('/tshirts', 'TshirtController@index');
 
 // GebruikerController Routes
-Route::post('/gebruiker', 'GebruikerController@registreer');
+Route::post('/gebruiker/registreerverantwoordelijke', 'GebruikerController@registreerVerantwoordelijke');
 Route::post('/addlid', 'GebruikerController@addLid');
 Route::delete('/deletelid/{id}', 'GebruikerController@deleteLid');
 Route::get('/getlid/{id}', 'GebruikerController@getLid');
