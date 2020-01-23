@@ -26,4 +26,7 @@ class Vereniging extends Model
     public function tweede() {
         return $this->hasOne('App\Gebruiker', 'tweedeverantwoordelijke');
     }
+    public function contactpersoon() {
+        return $this->hasOne('App\Gebruiker', 'contactpersoon');
+    }
 }

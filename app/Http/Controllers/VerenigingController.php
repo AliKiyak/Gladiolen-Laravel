@@ -22,10 +22,25 @@ class VerenigingController extends Controller
         return response()->json($vereniging);
     }
 
-    public function getLedenVanEigenVereniging()
+    public function getVerenigingMetLeden()
     {
-        $vereniging = \App\Vereniging::with('gebruikers')->where('hoofdverantwoordelijke', 1)->first();
+        //AANPASSEN MET JSON LOGIN TOKEN
+        //TODO AANPASSEN JSON LOGIN TOKEN
+        $vereniging = \App\Vereniging::with('gebruikers')->where('hoofdverantwoordelijke', 2)->first();
+        return response()->json($vereniging);
+    }
 
+    public function getVerenigingVanIngelogdeGebruiker()
+    {
+        $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', '1')->first();
+
+        return response()->json($vereniging);
+    }
+
+    public function updateVereniging($id, Request $request)
+    {
+        $data = $request->all();
+        $vereniging = \App\Vereniging::find($id)->update($data);
         return response()->json($vereniging);
     }
 
