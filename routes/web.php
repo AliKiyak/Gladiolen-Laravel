@@ -26,7 +26,7 @@ Route::delete('/deletelid/{id}', 'GebruikerController@deleteLid');
 Route::get('/getlid/{id}', 'GebruikerController@getLid');
 Route::put('/updatelid/{id}', 'GebruikerController@updateLid');
 Route::get('/gebruikers', 'GebruikerController@index');
-
+Route::post('/registreergebruiker', 'GebruikerController@registreerGebruiker');
 // EvenementController Routes
 Route::get('/evenement', 'EvenementController@index');
 Route::post('/evenement', 'EvenementController@registreer');

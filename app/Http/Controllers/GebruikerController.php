@@ -25,6 +25,23 @@ class GebruikerController extends Controller
 
         return response()->json($gebruiker);
     }
+    public function registreerGebruiker(gebruikerRegistratieRequest $request) {
+
+        $data = $request->all();
+        settype($data['tshirt_id'], 'integer');
+
+        $tshirt = \App\Tshirt::find($data['tshirt_id']);
+        $rol = \App\Rol::find($data['rol_id']);
+        $data['tshirt_id'] = null;
+
+        $gebruiker = \App\Gebruiker::create($data);
+        $gebruiker->rol()->associate($rol);
+        $gebruiker->tshirt()->associate($tshirt);
+
+        $gebruiker->save();
+
+        return response()->json($gebruiker);
+    }
     public function index()
     {
         $lids = \App\Gebruiker::all();
