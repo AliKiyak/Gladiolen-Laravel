@@ -35,3 +35,5 @@ Route::post('/evenement', 'EvenementController@registreer');
 Route::post('/vereniging', 'VerenigingController@registreer');
 Route::get('/eigenleden', 'VerenigingController@getLedenVanEigenVereniging');
 
+// RolController Routes
+Route::get('/rols', 'RolController@index');
