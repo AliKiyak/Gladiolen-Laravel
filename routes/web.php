@@ -32,6 +32,7 @@ Route::get('/evenement', 'EvenementController@index');
 Route::post('/evenement', 'EvenementController@registreer');
 
 // VerenigingController Routes
+Route::get('/verenigings', 'VerenigingController@index');
 Route::post('/vereniging', 'VerenigingController@registreer');
 Route::get('/eigenleden', 'VerenigingController@getLedenVanEigenVereniging');
 

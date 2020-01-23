@@ -6,7 +6,14 @@ use Illuminate\Http\Request;
 
 class VerenigingController extends Controller
 {
-    public function registreer(Request $request) {
+    public function index()
+    {
+        $verenigings = \App\Vereniging::all();
+        return response()->json($verenigings);
+    }
+
+    public function registreer(Request $request)
+    {
         $data = $request->all();
 
         $vereniging = \App\Vereniging::create($data);
@@ -15,7 +22,8 @@ class VerenigingController extends Controller
         return response()->json($vereniging);
     }
 
-    public function getLedenVanEigenVereniging() {
+    public function getLedenVanEigenVereniging()
+    {
         $vereniging = \App\Vereniging::with('gebruikers')->where('hoofdverantwoordelijke', 1)->first();
 
         return response()->json($vereniging);
