@@ -25,6 +25,11 @@ class GebruikerController extends Controller
 
         return response()->json($gebruiker);
     }
+    public function index()
+    {
+        $lids = \App\Gebruiker::all();
+        return response()->json($lids);
+    }
 
     public function getLid($id) {
         $lid = \App\Gebruiker::find($id);
