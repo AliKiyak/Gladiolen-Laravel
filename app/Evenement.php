@@ -10,7 +10,4 @@ class Evenement extends Model
 
     public $guarded = [];
 
-    public function verenigings() {
-        return $this->belongsToMany('App\Vereniging');
-    }
 }

@@ -4,9 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tshirt extends Model
+class Subtaak extends Model
 {
-    public $timestamps = false;
-
-
+    //
 }

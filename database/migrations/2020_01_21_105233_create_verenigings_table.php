@@ -13,19 +13,21 @@ class CreateVerenigingsTable extends Migration
      */
     public function up()
     {
+        //TODO Aanpassen van actief en inAanvraag in de frontend
         Schema::create('verenigings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('naam');
             $table->unsignedBigInteger('hoofdverantwoordelijke');
             $table->unsignedBigInteger('tweedeverantwoordelijke')->nullable();
             $table->unsignedBigInteger('contactpersoon')->nullable();
-            $table->string('rekeningnr');
-            $table->string('btwnr');
-            $table->string('straat');
-            $table->string('huisnummer');
-            $table->string('gemeente');
-            $table->string('postcode');
-            $table->boolean('actief');
+            $table->string('rekeningnr')->nullable();
+            $table->string('btwnr')->nullable();
+            $table->string('straat')->nullable();
+            $table->string('huisnummer')->nullable();
+            $table->string('gemeente')->nullable();
+            $table->string('postcode')->nullable();
+            $table->boolean('actief')->nullable();
+            $table->boolean('inAanvraag');
 
             //$table->foreign('hoofdverantwoordelijke')->references('id')->on('gebruikers')->onDelete('cascade')->onUpdate('cascade');
             //$table->foreign('2deverantwoordelijke')->references('id')->on('verenigings')->onDelete('cascade')->onUpdate('cascade');

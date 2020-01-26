@@ -9,7 +9,4 @@ class Rol extends Model
     public $timestamps = false;
     public $guarded = [];
 
-    public function gebruikers() {
-        return $this->hasMany('App\Gebruiker');
-    }
 }

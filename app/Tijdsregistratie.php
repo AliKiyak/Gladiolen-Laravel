@@ -8,7 +8,5 @@ class Tijdsregistratie extends Model
 {
     public $timestamps = false;
 
-    public function gebruiker() {
-        return $this->belongsTo('App\Gebruiker');
-    }
+
 }

@@ -15,26 +15,20 @@ class CreateGebruikersTable extends Migration
     {
         Schema::create('gebruikers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('naam');
+            $table->string('name');
             $table->string('voornaam');
             $table->string('roepnaam');
-            $table->string('straat');
-            $table->string('huisnummer');
             $table->dateTime('geboortedatum');
-            $table->string('emailadres');
+            $table->string('email');
             $table->string('telefoon');
-            $table->boolean('tweedetshirt')->nullable();
             $table->string('opmerking');
+            $table->unsignedBigInteger('rol_id')->nullable();
             $table->string('rijksregisternr');
-            $table->string('postcode');
-            $table->string('wachtwoord')->nullable();
+            $table->string('password')->nullable();
             $table->boolean('eersteAanmelding');
             $table->boolean('lunchpakket');
             $table->boolean('actief')->nullable();
-            $table->string('qrcode')->nullable();
             $table->string('foto')->nullable();
-            $table->unsignedBigInteger('tshirt_id')->nullable();
-            $table->unsignedBigInteger('rol_id')->nullable();
 
             // $table->foreign('tshirtId')->references('id')->on('tshirts')->onDelete('cascade')->onUpdate('cascade');
             // $table->foreign('rolId')->references('id')->on('rols')->onDelete('cascade')->onUpdate('cascade');
