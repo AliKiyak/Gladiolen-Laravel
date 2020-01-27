@@ -412,6 +412,7 @@ class ComposerStaticInita62d50134fbc74fa361680a00420aec1
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Evenement' => __DIR__ . '/../..' . '/app/Evenement.php',
+        'App\\EvenementVereniging' => __DIR__ . '/../..' . '/app/EvenementVereniging.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Gebruiker' => __DIR__ . '/../..' . '/app/Gebruiker.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -451,6 +452,7 @@ class ComposerStaticInita62d50134fbc74fa361680a00420aec1
         'App\\Taakgroep' => __DIR__ . '/../..' . '/app/Taakgroep.php',
         'App\\Tijdsregistratie' => __DIR__ . '/../..' . '/app/Tijdsregistratie.php',
         'App\\Tshirt' => __DIR__ . '/../..' . '/app/Tshirt.php',
+        'App\\Tshirttype' => __DIR__ . '/../..' . '/app/Tshirttype.php',
         'App\\Vereniging' => __DIR__ . '/../..' . '/app/Vereniging.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',

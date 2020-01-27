@@ -91,66 +91,9 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
     </include_path>
   </component>
-<<<<<<< HEAD:.idea/php.xml
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
   <component name="PhpUnit">
     <phpunit_settings>
       <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/phpunit.xml" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" use_configuration_file="true" />
     </phpunit_settings>
-=======
-  <component name="ProjectId" id="1WniGf9NciU7y2GmSpjcvr5E6yh" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="8749e23a-7f3e-4e29-a223-71476455bb23" name="Default Changelist" comment="" />
-      <created>1579791666224</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1579791666224</updated>
-      <workItem from="1579791672527" duration="924000" />
-      <workItem from="1579804285349" duration="116000" />
-      <workItem from="1579810296151" duration="1626000" />
-      <workItem from="1579851444459" duration="169000" />
-      <workItem from="1579851961274" duration="3451000" />
-      <workItem from="1580033018565" duration="3466000" />
-    </task>
-    <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="549" y="172" key="FileChooserDialogImpl" timestamp="1579851610986">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.832@0.0.1536.832" timestamp="1579851610986" />
->>>>>>> verwijderen van relaties:.idea/workspace.xml
   </component>
 </project>

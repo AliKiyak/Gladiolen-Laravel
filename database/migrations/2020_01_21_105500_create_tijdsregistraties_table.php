@@ -17,10 +17,11 @@ class CreateTijdsregistratiesTable extends Migration
         Schema::create('tijdsregistraties', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('gebruiker_id');
-            $table->unsignedBigInteger('evenementVerenigingId');
+            $table->unsignedBigInteger('evenementvereniging_id');
             $table->dateTime('checkIn')->nullable();
             $table->dateTime('checkUit')->nullable();
             $table->dateTime('manCheckIn')->nullable();
+            $table->dateTime('manCheckUit')->nullable();
             $table->dateTime('adminCheckIn')->nullable();
             $table->dateTime('adminCheckUit')->nullable();
 

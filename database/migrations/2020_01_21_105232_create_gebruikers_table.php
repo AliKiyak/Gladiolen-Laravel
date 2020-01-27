@@ -17,7 +17,7 @@ class CreateGebruikersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('voornaam');
-            $table->string('roepnaam');
+            $table->string('roepnaam')->nullable();
             $table->dateTime('geboortedatum');
             $table->string('email');
             $table->string('telefoon');

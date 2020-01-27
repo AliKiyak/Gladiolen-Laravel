@@ -11,12 +11,20 @@ class Vereniging extends Model
     public $guarded = [];
 
     public function hoofd() {
-        return $this->hasOne('App\Gebruiker', 'hoofdverantwoordelijke');
+        return $this->belongsTo('App\Gebruiker', 'hoofdverantwoordelijke');
     }
     public function tweede() {
-        return $this->hasOne('App\Gebruiker', 'tweedeverantwoordelijke');
+        return $this->belongsTo('App\Gebruiker', 'tweedeverantwoordelijke');
     }
     public function contactpersoon() {
-        return $this->hasOne('App\Gebruiker', 'contactpersoon');
+        return $this->belongsTo('App\Gebruiker', 'contactpersoon');
+    }
+
+    public function gebruikers() {
+        return $this->belongsToMany('App\Gebruiker');
+    }
+
+    public function evenementen() {
+        return $this->belongsToMany('App\Evenement');
     }
 }

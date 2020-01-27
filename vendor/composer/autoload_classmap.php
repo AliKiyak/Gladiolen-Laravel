@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Evenement' => $baseDir . '/app/Evenement.php',
+    'App\\EvenementVereniging' => $baseDir . '/app/EvenementVereniging.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Gebruiker' => $baseDir . '/app/Gebruiker.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -47,6 +48,7 @@ return array(
     'App\\Taakgroep' => $baseDir . '/app/Taakgroep.php',
     'App\\Tijdsregistratie' => $baseDir . '/app/Tijdsregistratie.php',
     'App\\Tshirt' => $baseDir . '/app/Tshirt.php',
+    'App\\Tshirttype' => $baseDir . '/app/Tshirttype.php',
     'App\\Vereniging' => $baseDir . '/app/Vereniging.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonImmutable' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',

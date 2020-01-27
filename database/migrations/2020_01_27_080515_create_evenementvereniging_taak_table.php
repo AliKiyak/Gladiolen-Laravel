@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTshirtsTable extends Migration
+class CreateEvenementverenigingTaakTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateTshirtsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tshirts', function (Blueprint $table) {
+        Schema::create('evenementvereniging_taak', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('maat');
-            $table->string('geslacht');
-            $table->unsignedBigInteger('tshirttype_id');
+            $table->unsignedBigInteger('evenementvereniging_id');
+            $table->unsignedBigInteger('taak_id');
         });
     }
 
@@ -28,6 +27,6 @@ class CreateTshirtsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tshirts');
+        Schema::dropIfExists('evenementvereniging_taak');
     }
 }
