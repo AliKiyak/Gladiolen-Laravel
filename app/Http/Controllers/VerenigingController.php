@@ -32,13 +32,14 @@ class VerenigingController extends Controller
     {
         //AANPASSEN MET JSON LOGIN TOKEN
         //TODO AANPASSEN JSON LOGIN TOKEN
-        $vereniging = \App\Vereniging::with('gebruikers')->where('hoofdverantwoordelijke', 2)->first();
+        $vereniging = \App\Vereniging::with('gebruikers')->where('hoofdverantwoordelijke', 1)->first();
         return response()->json($vereniging);
     }
 
     public function getVerenigingVanIngelogdeGebruiker()
     {
-        $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', '2')->first();
+        //TODO UPDATE JWT
+        $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', '1')->first();
 
         return response()->json($vereniging);
     }

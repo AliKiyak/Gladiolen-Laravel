@@ -13,13 +13,10 @@ class GebruikerController extends Controller
 
         $data = $request->all();
 
-        $tshirt = \App\Tshirt::find($data['tshirt_id']);
         $rol = \App\Rol::find(3);
 
-        unset($data['tshirt_id']);
         $gebruiker = \App\Gebruiker::create($data);
         $gebruiker->rol()->associate($rol);
-        $gebruiker->tshirts()->save($tshirt, ['aantal'=>1]);
 
         $gebruiker->save();
 
@@ -60,7 +57,7 @@ class GebruikerController extends Controller
 
     public function getLid($id)
     {
-        $lid = \App\Gebruiker::find($id);
+        $lid = \App\Gebruiker::with('tshirts')->find($id);
 
         return response()->json($lid);
     }
@@ -68,18 +65,15 @@ class GebruikerController extends Controller
     public function addLid(Request $request)
     {
         $data = $request->all();
-        $tshirt = \App\Tshirt::find($data['tshirt_id']);
-        unset($data['tshirt_id']);
 
         $gebruiker = \App\Gebruiker::create($data);
         $rol = \App\Gebruiker::find(4);
+
         $gebruiker->rol()->associate($rol);
-        $gebruiker->tshirts()->save($tshirt, ['aantal'=>1]);
         $gebruiker->save();
 
         //TODO INGELOGDE HOOFDVERANTWOORDELIJKE REGELEN
-        $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', 2)->first();
-
+        $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', 1)->first();
         $vereniging->gebruikers()->save($gebruiker);
 
         return response()->json($gebruiker);

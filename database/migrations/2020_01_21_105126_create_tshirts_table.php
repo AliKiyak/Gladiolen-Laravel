@@ -17,7 +17,8 @@ class CreateTshirtsTable extends Migration
             $table->bigIncrements('id');
             $table->string('maat');
             $table->string('geslacht');
-            $table->unsignedBigInteger('tshirttype_id');
+            $table->unsignedBigInteger('gebruiker_id');
+            $table->unsignedBigInteger('tshirttype_id')->nullable();
         });
     }
 

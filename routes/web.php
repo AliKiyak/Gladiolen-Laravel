@@ -18,7 +18,8 @@ Route::get('/', function () {
 
 // TshirtController Routes
 Route::get('/tshirts', 'TshirtController@index');
-
+Route::post('/tshirt', 'TshirtController@create');
+Route::put('/tshirt/{id}', 'TshirtController@updateLidGeslachtEnMaat');
 // GebruikerController Routes
 Route::post('/gebruiker/registreerverantwoordelijke', 'GebruikerController@registreerVerantwoordelijke');
 Route::post('/addlid', 'GebruikerController@addLid');
