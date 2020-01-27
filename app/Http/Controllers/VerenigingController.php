@@ -38,7 +38,7 @@ class VerenigingController extends Controller
 
     public function getVerenigingVanIngelogdeGebruiker()
     {
-        $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', '1')->first();
+        $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', '2')->first();
 
         return response()->json($vereniging);
     }

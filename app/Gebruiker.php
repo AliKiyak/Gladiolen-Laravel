@@ -13,7 +13,7 @@ class Gebruiker extends Model
         return $this->belongsTo('App\Rol');
     }
     public function tshirts() {
-        return $this->belongsToMany('App\Tshirt');
+        return $this->hasMany('App\Tshirt');
     }
 
     public function verenigingen() {
@@ -22,5 +22,6 @@ class Gebruiker extends Model
     public function tijdsregistraties() {
         return $this->hasMany('App\Tijdsregistratie');
     }
+
 
 }
