@@ -21,4 +21,16 @@ class EvenementController extends Controller
 
         return response()->json($evenement);
     }
+    public function updateEvenement($id, Request $request)
+    {
+        $data = $request->all();
+        $evenement = \App\Evenement::find($id)->update($data);
+        return response()->json($evenement);
+    }
+    public function getEvenement($id)
+    {
+        $evenement = \App\Evenement::find($id);
+
+        return response()->json($evenement);
+    }
 }
