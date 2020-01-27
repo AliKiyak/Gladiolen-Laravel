@@ -8,8 +8,18 @@ class EvenementVerenigingController extends Controller
 {
     public function getVerenigingenByEvenementId($evenementId)
     {
-        $verenigingen = \App\Vereniging::where('evenementId', $evenementId)->first();
+        $verenigingen = \App\EvenementVereniging::where('evenementId', $evenementId)->first();
 
         return response()->json($verenigingen);
+    }
+
+    public function registreerEvenementVereniging(evenementVerenigingRegistratieRequest $request)
+    {
+        $data = $request->all();
+
+        $evenementVereniging = \App\EvenementVereniging::create($data);
+        $evenementVereniging->save();
+
+        return response()->json($evenementVereniging);
     }
 }

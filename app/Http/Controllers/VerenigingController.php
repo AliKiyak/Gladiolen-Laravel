@@ -8,7 +8,7 @@ class VerenigingController extends Controller
 {
     public function index()
     {
-        $verenigings = \App\Vereniging::all();
+        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contactpersoon')->get();
         return response()->json($verenigings);
     }
 

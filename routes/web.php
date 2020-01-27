@@ -44,7 +44,8 @@ Route::get('/vereniging/verenigingingelogd', 'VerenigingController@getVereniging
 Route::put('/vereniging/{id}', 'VerenigingController@updateVereniging');
 
 // EvenementVerenigingController Routes
-Route::get('/evenementVereniging/evenementVereniging/getVerenigingenByEvenementId/{evenementId}', 'EvenementVerenigingController@getVerenigingenByEvenementId');
+Route::get('/evenementVereniging/getVerenigingenByEvenementId/{evenementId}', 'EvenementVerenigingController@getVerenigingenByEvenementId');
+Route::post('/evenementVereniging/postEvenementVereniging', 'EvenementVerenigingController@registreerEvenementVereniging');
 
 // RolController Routes
 Route::get('/rols', 'RolController@index');
