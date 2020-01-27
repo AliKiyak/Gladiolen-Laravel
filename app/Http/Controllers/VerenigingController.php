@@ -12,6 +12,12 @@ class VerenigingController extends Controller
         return response()->json($verenigings);
     }
 
+    public function getVereniging($id)
+    {
+        $vereniging = \App\Vereniging::find($id);
+        return response()->json($vereniging);
+    }
+
     public function registreer(Request $request)
     {
         $data = $request->all();

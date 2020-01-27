@@ -27,6 +27,7 @@ Route::get('/getlid/{id}', 'GebruikerController@getLid');
 Route::put('/updatelid/{id}', 'GebruikerController@updateLid');
 Route::get('/gebruikers', 'GebruikerController@index');
 Route::post('/registreergebruiker', 'GebruikerController@registreerGebruiker');
+Route::get('gebruiker/getGebruiker/{id}', 'GebruikerController@getGebruiker');
 
 // EvenementController Routes
 Route::get('/evenement', 'EvenementController@index');
@@ -35,10 +36,14 @@ Route::put('/evenement/{id}', 'EvenementController@updateEvenement');
 
 // VerenigingController Routes
 Route::get('/verenigings', 'VerenigingController@index');
+Route::get('/vereniging/getVereniging/{id}', 'VerenigingController@getVereniging');
 Route::post('/vereniging', 'VerenigingController@registreer');
 Route::get('/vereniging/verenigingmetleden', 'VerenigingController@getVerenigingMetLeden');
 Route::get('/vereniging/verenigingingelogd', 'VerenigingController@getVerenigingVanIngelogdeGebruiker');
 Route::put('/vereniging/{id}', 'VerenigingController@updateVereniging');
+
+// EvenementVerenigingController Routes
+Route::get('/evenementVereniging/evenementVereniging/getVerenigingenByEvenementId/{evenementId}', 'EvenementVerenigingController@getVerenigingenByEvenementId');
 
 // RolController Routes
 Route::get('/rols', 'RolController@index');

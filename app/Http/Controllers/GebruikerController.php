@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class GebruikerController extends Controller
 {
-    public function registreerVerantwoordelijke(gebruikerRegistratieRequest $request) {
+    public function registreerVerantwoordelijke(gebruikerRegistratieRequest $request)
+    {
 
         $data = $request->all();
         settype($data['tshirt_id'], 'integer');
@@ -25,7 +26,9 @@ class GebruikerController extends Controller
 
         return response()->json($gebruiker);
     }
-    public function registreerGebruiker(gebruikerRegistratieRequest $request) {
+
+    public function registreerGebruiker(gebruikerRegistratieRequest $request)
+    {
 
         $data = $request->all();
         settype($data['tshirt_id'], 'integer');
@@ -42,18 +45,28 @@ class GebruikerController extends Controller
 
         return response()->json($gebruiker);
     }
+
     public function index()
     {
         $lids = \App\Gebruiker::all();
         return response()->json($lids);
     }
 
-    public function getLid($id) {
+    public function getGebruiker($id)
+    {
+        $gebruiker = \App\Gebruiker::find($id);
+        return response()->json($gebruiker);
+    }
+
+    public function getLid($id)
+    {
         $lid = \App\Gebruiker::find($id);
 
         return response()->json($lid);
     }
-    public function addLid(Request $request) {
+
+    public function addLid(Request $request)
+    {
         $data = $request->all();
 
         $gebruiker = \App\Gebruiker::create($data);
@@ -68,12 +81,14 @@ class GebruikerController extends Controller
         return response()->json($gebruiker);
     }
 
-    public function deleteLid($id) {
+    public function deleteLid($id)
+    {
         $lid = \App\Gebruiker::find($id);
         $lid->delete();
     }
 
-    public function updateLid($id, Request $request) {
+    public function updateLid($id, Request $request)
+    {
         $data = $request->all();
         $gebruiker = \App\Gebruiker::find($id)->update($data);
 
