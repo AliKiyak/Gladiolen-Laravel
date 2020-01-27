@@ -44,10 +44,9 @@ class GebruikerController extends Controller
 
     public function index()
     {
-        $lids = \App\Gebruiker::all();
+        $lids = \App\Gebruiker::with('rol')->get();
         return response()->json($lids);
     }
-
 
     public function getGebruiker($id)
     {
