@@ -13,8 +13,11 @@ class Tijdsregistratie extends Model
         return $this->belongsTo('App\Gebruiker');
     }
 
-    public function evenementvereniging() {
-        return $this->belongsTo('App\EvenementVereniging');
+    public function evenement() {
+        return $this->belongsTo('App\Evenement');
+    }
+    public function vereniging(){
+        return $this->belongsTo('App\Vereniging');
     }
 
 }
