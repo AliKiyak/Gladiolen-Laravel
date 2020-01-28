@@ -16,7 +16,5 @@ class EvenementVereniging extends Model
     public function evenement() {
         return $this->belongsTo('App\Evenement');
     }
-    public function tijdsregistraties() {
-        return $this->hasMany('App\Tijdsregistratie');
-    }
+
 }

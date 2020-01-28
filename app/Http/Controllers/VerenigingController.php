@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VerenigingController extends Controller
 {
@@ -30,16 +31,15 @@ class VerenigingController extends Controller
 
     public function getVerenigingMetLeden()
     {
-        //AANPASSEN MET JSON LOGIN TOKEN
-        //TODO AANPASSEN JSON LOGIN TOKEN
-        $vereniging = \App\Vereniging::with('gebruikers')->where('hoofdverantwoordelijke', 1)->first();
+        $user = Auth::user();
+        $vereniging = \App\Vereniging::with('gebruikers')->where('hoofdverantwoordelijke', $user->id)->first();
         return response()->json($vereniging);
     }
 
     public function getVerenigingVanIngelogdeGebruiker()
     {
-        //TODO UPDATE JWT
-        $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', '1')->first();
+        $user = Auth::user();
+        $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', $user->id)->first();
 
         return response()->json($vereniging);
     }

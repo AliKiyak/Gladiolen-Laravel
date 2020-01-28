@@ -13,7 +13,6 @@ class CreateVerenigingsTable extends Migration
      */
     public function up()
     {
-        //TODO Aanpassen van actief en inAanvraag in de frontend
         Schema::create('verenigings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('naam');
