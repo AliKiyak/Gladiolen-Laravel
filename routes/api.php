@@ -16,6 +16,7 @@ Route::post('login', 'GebruikerController@login');
 Route::post('/gebruiker/registreerverantwoordelijke', 'GebruikerController@registreerVerantwoordelijke');
 Route::post('/vereniging', 'VerenigingController@registreer');
 Route::post('/tshirt', 'TshirtController@create');
+Route::post('/vereniging', 'VerenigingController@registreer');
 
 Route::group(['middleware' => 'auth:api'], function(){
     // Tshirt
@@ -38,7 +39,6 @@ Route::group(['middleware' => 'auth:api'], function(){
     // Vereniging
     Route::get('/vereniging', 'VerenigingController@index');
     Route::get('/vereniging/getVereniging/{id}', 'VerenigingController@getVereniging');
-    Route::post('/vereniging', 'VerenigingController@registreer');
     Route::get('/vereniging/verenigingmetleden', 'VerenigingController@getVerenigingMetLeden');
     Route::get('/vereniging/verenigingingelogd', 'VerenigingController@getVerenigingVanIngelogdeGebruiker');
     Route::put('/vereniging/{id}', 'VerenigingController@updateVereniging');
