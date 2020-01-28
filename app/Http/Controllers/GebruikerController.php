@@ -5,16 +5,29 @@ namespace App\Http\Controllers;
 use App\Gebruiker;
 use App\Http\Requests\gebruikerRegistratieRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GebruikerController extends Controller
 {
+    public function login(Request $request) {
+        $data = $request->all();
+
+        if(Auth::attempt(['email'=>$data['email'], 'password' => $data['password']])) {
+            $user= Auth::user();
+            $success['token'] = $user->createToken('MyApp')->accessToken;
+            return response()->json($success);
+        } else {
+            return response()->json(['error' => 'Unauthorised'], 401);
+        }
+    }
+
     public function registreerVerantwoordelijke(gebruikerRegistratieRequest $request)
     {
 
         $data = $request->all();
 
         $rol = \App\Rol::find(3);
-
+        $data['password'] = bcrypt($data['password']);
         $gebruiker = \App\Gebruiker::create($data);
         $gebruiker->rol()->associate($rol);
 
@@ -54,6 +67,10 @@ class GebruikerController extends Controller
         return response()->json($gebruiker);
     }
 
+    public function getKernleden($id){
+        $kernleden = \App\Gebruiker::where('rol_id', 2)->first();
+        return response()->json($kernleden);
+    }
     public function getLid($id)
     {
         $lid = \App\Gebruiker::with('tshirts')->find($id);

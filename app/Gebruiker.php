@@ -2,10 +2,14 @@
 
 namespace App;
 
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
-
-class Gebruiker extends Model
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticable;
+class Gebruiker extends Authenticable
 {
+    use HasApiTokens,Notifiable;
     public $timestamps = false;
     public $guarded = [];
 
