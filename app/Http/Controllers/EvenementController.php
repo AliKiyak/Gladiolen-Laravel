@@ -36,8 +36,9 @@
             return response()->json($evenement);
         }
 
-        public function getActieveEvenementen(){
-            $evenementen = \App\Evenement::where('actief',1)->get();
+        public function getActieveEvenementen()
+        {
+            $evenementen = \App\Evenement::where('actief', 1)->get();
             return response()->json($evenementen);
         }
 
@@ -51,11 +52,14 @@
             }
             $gebruikers = [];
 
-            foreach ($verenigingIds as $id){
-                $vereniging = \App\Vereniging::where("id",$id)->with('gebruikers')->first();
+            foreach ($verenigingIds as $id) {
+                $vereniging = \App\Vereniging::where("id", $id)->with('gebruikers')->first();
 
-                foreach ($vereniging->gebruikers as $gebruiker){
-                    array_push($gebruikers,$gebruiker);
+                foreach ($vereniging->gebruikers as $gebruiker) {
+                    $temp = \App\Gebruiker::with('verenigingen')->find($gebruiker->id);
+                    if (!in_array($temp, $gebruikers)) {
+                        array_push($gebruikers, $temp);
+                    }
 
                 }
 
