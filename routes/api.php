@@ -91,7 +91,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::put('/gebruiker/updatelid/{id}', 'GebruikerController@updateLid');
     Route::post('/gebruiker/registreergebruiker', 'GebruikerController@registreerGebruiker');
     Route::get('/gebruiker/getGebruiker/{id}', 'GebruikerController@getGebruiker');
-
+    Route::get('/gebruiker/ingelogdegebruiker', 'GebruikerController@detailIngelogdeGebruiker');
     // Evenement
     Route::get('/evenement', 'EvenementController@index');
     Route::post('/evenement', 'EvenementController@registreer');

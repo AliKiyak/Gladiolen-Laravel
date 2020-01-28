@@ -104,5 +104,10 @@ class GebruikerController extends Controller
         return response()->json($gebruiker);
     }
 
+        public function detailIngelogdeGebruiker() {
+        $user = Auth::user();
+        return response()->json($user);
+    }
+
 
 }
