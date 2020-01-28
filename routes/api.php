@@ -17,6 +17,8 @@ Route::post('/gebruiker/registreerverantwoordelijke', 'GebruikerController@regis
 Route::post('/vereniging', 'VerenigingController@registreer');
 Route::post('/tshirt', 'TshirtController@create');
 Route::post('/vereniging', 'VerenigingController@registreer');
+Route::get('/evenement/getGebruikersFromEvenement/{id}', 'EvenementController@getGebruikersFromEvenement');
+Route::get('/actieveEvenementen','EvenementController@getActieveEvenementen');
 
 Route::group(['middleware' => 'auth:api'], function(){
     // Tshirt
@@ -54,7 +56,5 @@ Route::group(['middleware' => 'auth:api'], function(){
 });
 
 
-Route::get('/evenement/getGebruikersFromEvenement/{id}', 'EvenementController@getGebruikersFromEvenement');
-Route::get('/actieveEvenementen','EvenementController@getActieveEvenementen');
 
 
