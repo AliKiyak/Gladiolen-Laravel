@@ -13,7 +13,6 @@ class CreateTijdsregistratiesTable extends Migration
      */
     public function up()
     {
-        //TODO evenementVerenigingId in de Eloquent models oplossen ==> BELANGRIJK!!
         Schema::create('tijdsregistraties', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('gebruiker_id');
