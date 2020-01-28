@@ -17,37 +17,36 @@ Route::get('/', function () {
 });
 
 // TshirtController Routes
-Route::get('/tshirts', 'TshirtController@index');
-Route::post('/tshirt', 'TshirtController@create');
-Route::put('/tshirt/{id}', 'TshirtController@updateLidGeslachtEnMaat');
+//Route::get('/tshirts', 'TshirtController@index');
+//Route::post('/tshirt', 'TshirtController@create');
+//Route::put('/tshirt/{id}', 'TshirtController@updateLidGeslachtEnMaat');
 // GebruikerController Routes
-Route::post('/gebruiker/registreerverantwoordelijke', 'GebruikerController@registreerVerantwoordelijke');
-Route::post('/addlid', 'GebruikerController@addLid');
-Route::delete('/deletelid/{id}', 'GebruikerController@deleteLid');
-Route::get('/getlid/{id}', 'GebruikerController@getLid');
-Route::put('/updatelid/{id}', 'GebruikerController@updateLid');
-Route::get('/gebruikers', 'GebruikerController@index');
-Route::post('/registreergebruiker', 'GebruikerController@registreerGebruiker');
-Route::get('gebruiker/getGebruiker/{id}', 'GebruikerController@getGebruiker');
-Route::get('gebruiker/getKernleden', 'GebruikerController@getKernleden');
-
+// Route::post('/gebruiker/registreerverantwoordelijke', 'GebruikerController@registreerVerantwoordelijke');
+//Route::post('/addlid', 'GebruikerController@addLid');
+//Route::delete('/deletelid/{id}', 'GebruikerController@deleteLid');
+//Route::get('/getlid/{id}', 'GebruikerController@getLid');
+//Route::put('/updatelid/{id}', 'GebruikerController@updateLid');
+//Route::get('/gebruikers', 'GebruikerController@index');
+//Route::post('/registreergebruiker', 'GebruikerController@registreerGebruiker');
+//Route::get('gebruiker/getGebruiker/{id}', 'GebruikerController@getGebruiker');
+//
 // EvenementController Routes
-Route::get('/evenement', 'EvenementController@index');
-Route::post('/evenement', 'EvenementController@registreer');
-Route::put('/evenement/{id}', 'EvenementController@updateEvenement');
-
+//Route::get('/evenement', 'EvenementController@index');
+//Route::post('/evenement', 'EvenementController@registreer');
+//Route::put('/evenement/{id}', 'EvenementController@updateEvenement');
+//
 
 // VerenigingController Routes
-Route::get('/verenigings', 'VerenigingController@index');
-Route::get('/vereniging/getVereniging/{id}', 'VerenigingController@getVereniging');
-Route::post('/vereniging', 'VerenigingController@registreer');
-Route::get('/vereniging/verenigingmetleden', 'VerenigingController@getVerenigingMetLeden');
-Route::get('/vereniging/verenigingingelogd', 'VerenigingController@getVerenigingVanIngelogdeGebruiker');
-Route::put('/vereniging/{id}', 'VerenigingController@updateVereniging');
+//Route::get('/verenigings', 'VerenigingController@index');
+//Route::get('/vereniging/getVereniging/{id}', 'VerenigingController@getVereniging');
+//Route::post('/vereniging', 'VerenigingController@registreer');
+//Route::get('/vereniging/verenigingmetleden', 'VerenigingController@getVerenigingMetLeden');
+//Route::get('/vereniging/verenigingingelogd', 'VerenigingController@getVerenigingVanIngelogdeGebruiker');
+//Route::put('/vereniging/{id}', 'VerenigingController@updateVereniging');
 
 // EvenementVerenigingController Routes
-Route::get('/evenementVereniging/getVerenigingenByEvenementId/{evenementId}', 'EvenementVerenigingController@getVerenigingenByEvenementId');
-Route::post('/evenementVereniging/postEvenementVereniging', 'EvenementVerenigingController@registreerEvenementVereniging');
+//Route::get('/evenementVereniging/getVerenigingenByEvenementId/{evenementId}', 'EvenementVerenigingController@getVerenigingenByEvenementId');
+//Route::post('/evenementVereniging/postEvenementVereniging', 'EvenementVerenigingController@registreerEvenementVereniging');
 
 // RolController Routes
-Route::get('/rols', 'RolController@index');
+//Route::get('/rols', 'RolController@index');
