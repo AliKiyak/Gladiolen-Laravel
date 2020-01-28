@@ -16,7 +16,7 @@ class Vereniging extends Model
     public function tweede() {
         return $this->belongsTo('App\Gebruiker', 'tweedeverantwoordelijke');
     }
-    public function contactpersoon() {
+    public function contact() {
         return $this->belongsTo('App\Gebruiker', 'contactpersoon');
     }
 

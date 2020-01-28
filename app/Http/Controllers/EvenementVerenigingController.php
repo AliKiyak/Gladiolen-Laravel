@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Vereniging;
 use Illuminate\Http\Request;
 
 class EvenementVerenigingController extends Controller
@@ -13,13 +14,14 @@ class EvenementVerenigingController extends Controller
         return response()->json($verenigingen);
     }
 
-    public function registreerEvenementVereniging(evenementVerenigingRegistratieRequest $request)
+    public function registreerEvenementVereniging(Request $request)
     {
         $data = $request->all();
+        $evenement = \App\Evenement::find($data["evenementid"]);
+        $vereniging = \App\Vereniging::find($data["verenigingid"]);
 
-        $evenementVereniging = \App\EvenementVereniging::create($data);
-        $evenementVereniging->save();
+        $evenement->verenigingen()->save($vereniging);
 
-        return response()->json($evenementVereniging);
+        return response()->json($evenement);
     }
 }

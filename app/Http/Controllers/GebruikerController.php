@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class GebruikerController extends Controller
 {
-    public function login(Request $request) {
+    public function login(Request $request)
+    {
         $data = $request->all();
 
-        if(Auth::attempt(['email'=>$data['email'], 'password' => $data['password']])) {
-            $user= Auth::user();
+        if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
+            $user = Auth::user();
             $success['token'] = $user->createToken('MyApp')->accessToken;
             return response()->json($success);
         } else {
@@ -23,7 +24,6 @@ class GebruikerController extends Controller
 
     public function registreerVerantwoordelijke(gebruikerRegistratieRequest $request)
     {
-
         $data = $request->all();
 
         $rol = \App\Rol::find(3);
@@ -58,14 +58,16 @@ class GebruikerController extends Controller
 
     public function getGebruiker($id)
     {
-        $gebruiker = \App\Gebruiker::find($id);
+        $gebruiker = \App\Gebruiker::with('tshirts', 'rol')->find($id);
         return response()->json($gebruiker);
     }
 
-    public function getKernleden(){
+    public function getKernleden()
+    {
         $kernleden = \App\Gebruiker::where('rol_id', 2)->get();
         return response()->json($kernleden);
     }
+
     public function getLid($id)
     {
         $lid = \App\Gebruiker::with('tshirts')->find($id);
@@ -103,10 +105,9 @@ class GebruikerController extends Controller
         return response()->json($gebruiker);
     }
 
-        public function detailIngelogdeGebruiker() {
+    public function detailIngelogdeGebruiker()
+    {
         $user = Auth::user();
         return response()->json($user);
     }
-
-
 }

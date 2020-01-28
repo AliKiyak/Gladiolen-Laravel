@@ -9,7 +9,7 @@ class VerenigingController extends Controller
 {
     public function index()
     {
-        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contactpersoon')->get();
+        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contact')->get();
         return response()->json($verenigings);
     }
 
@@ -48,6 +48,11 @@ class VerenigingController extends Controller
     {
         $data = $request->all();
         $vereniging = \App\Vereniging::find($id)->update($data);
+        return response()->json($vereniging);
+    }
+
+    public function getVerenigingByIdMetLeden($id) {
+        $vereniging = \App\Vereniging::with('gebruikers')->where('id', $id)->first();
         return response()->json($vereniging);
     }
 
