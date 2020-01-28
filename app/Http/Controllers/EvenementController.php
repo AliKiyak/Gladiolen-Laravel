@@ -36,6 +36,11 @@
             return response()->json($evenement);
         }
 
+        public function getActieveEvenementen(){
+            $evenementen = \App\Evenement::where('actief',1)->get();
+            return response()->json($evenementen);
+        }
+
         public function getGebruikersFromEvenement($evenementId)
         {
             //$evenement = \App\Evenement::all();
