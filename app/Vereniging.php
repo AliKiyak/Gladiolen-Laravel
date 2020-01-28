@@ -27,4 +27,8 @@ class Vereniging extends Model
     public function evenementen() {
         return $this->belongsToMany('App\Evenement');
     }
+    public function tijdsregistraties()
+    {
+        return $this->hasMany('App\Tijdsregistratie');
+    }
 }
