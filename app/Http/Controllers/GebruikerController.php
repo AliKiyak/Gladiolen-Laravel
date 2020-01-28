@@ -83,8 +83,8 @@ class GebruikerController extends Controller
         $gebruiker->rol()->associate($rol);
         $gebruiker->save();
 
-        //TODO INGELOGDE HOOFDVERANTWOORDELIJKE REGELEN
-        $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', 1)->first();
+        $user = Auth::user();
+        $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', $user->id)->first();
         $vereniging->gebruikers()->save($gebruiker);
 
         return response()->json($gebruiker);
