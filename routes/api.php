@@ -15,11 +15,11 @@ use Illuminate\Http\Request;
 Route::post('login', 'GebruikerController@login');
 Route::post('/gebruiker/registreerverantwoordelijke', 'GebruikerController@registreerVerantwoordelijke');
 Route::post('/vereniging', 'VerenigingController@registreer');
+Route::post('/tshirt', 'TshirtController@create');
 
 Route::group(['middleware' => 'auth:api'], function(){
     // Tshirt
     Route::get('/tshirt', 'TshirtController@index');
-    Route::post('/tshirt', 'TshirtController@create');
     Route::put('/tshirt/{id}', 'TshirtController@updateLidGeslachtEnMaat');
 
     //Gebruiker
