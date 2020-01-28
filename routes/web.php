@@ -29,6 +29,7 @@ Route::put('/updatelid/{id}', 'GebruikerController@updateLid');
 Route::get('/gebruikers', 'GebruikerController@index');
 Route::post('/registreergebruiker', 'GebruikerController@registreerGebruiker');
 Route::get('gebruiker/getGebruiker/{id}', 'GebruikerController@getGebruiker');
+Route::get('gebruiker/getKernleden', 'GebruikerController@getKernleden');
 
 // EvenementController Routes
 Route::get('/evenement', 'EvenementController@index');
