@@ -22,14 +22,15 @@ Route::post('/vereniging', 'VerenigingController@registreer');
 Route::get('/evenement/getGebruikersFromEvenement/{id}', 'EvenementController@getGebruikersFromEvenement');
 Route::get('/actieveEvenementen','EvenementController@getActieveEvenementen');
 Route::post('/postTijdsregistratie','TijdsregistratieController@postTijdsregistratie');
+Route::get('/actieveEvenementen', 'EvenementController@getActieveEvenementen');
 
-Route::group(['middleware' => 'auth:api'], function(){
+Route::group(['middleware' => 'auth:api'], function () {
     // Tshirt
     Route::get('/tshirt', 'TshirtController@index');
     Route::put('/tshirt/{id}', 'TshirtController@updateLidGeslachtEnMaat');
 
     //Gebruiker
-    Route::get('/gebruikers', 'GebruikerController@index');
+    Route::get('/gebruiker', 'GebruikerController@index');
     Route::post('/gebruiker/addlid', 'GebruikerController@addLid');
     Route::delete('/gebruiker/deletelid/{id}', 'GebruikerController@deleteLid');
     Route::get('/gebruiker/getlid/{id}', 'GebruikerController@getLid');
@@ -37,6 +38,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/gebruiker/registreergebruiker', 'GebruikerController@registreerGebruiker');
     Route::get('/gebruiker/getGebruiker/{id}', 'GebruikerController@getGebruiker');
     Route::get('/gebruiker/ingelogdegebruiker', 'GebruikerController@detailIngelogdeGebruiker');
+    Route::get('gebruiker/getKernleden', 'GebruikerController@getKernleden');
+
     // Evenement
     Route::get('/evenement', 'EvenementController@index');
     Route::post('/evenement', 'EvenementController@registreer');
@@ -48,6 +51,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/vereniging/verenigingmetleden', 'VerenigingController@getVerenigingMetLeden');
     Route::get('/vereniging/verenigingingelogd', 'VerenigingController@getVerenigingVanIngelogdeGebruiker');
     Route::put('/vereniging/{id}', 'VerenigingController@updateVereniging');
+    Route::get('/vereniging/verenigingbyidmetleden/{id}', 'VerenigingController@getVerenigingByIdMetLeden');
 
     // EvenementVereniging
     Route::get('/evenementVereniging/getVerenigingenByEvenementId/{evenementId}', 'EvenementVerenigingController@getVerenigingenByEvenementId');
