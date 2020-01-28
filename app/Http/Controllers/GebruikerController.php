@@ -77,7 +77,7 @@ class GebruikerController extends Controller
         $data = $request->all();
 
         $gebruiker = \App\Gebruiker::create($data);
-        $rol = \App\Gebruiker::find(4);
+        $rol = \App\Rol::find(4);
 
         $gebruiker->rol()->associate($rol);
         $gebruiker->save();
