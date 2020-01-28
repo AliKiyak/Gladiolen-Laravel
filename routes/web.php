@@ -35,6 +35,7 @@ Route::get('/evenement', 'EvenementController@index');
 Route::post('/evenement', 'EvenementController@registreer');
 Route::put('/evenement/{id}', 'EvenementController@updateEvenement');
 
+
 // VerenigingController Routes
 Route::get('/verenigings', 'VerenigingController@index');
 Route::get('/vereniging/getVereniging/{id}', 'VerenigingController@getVereniging');
