@@ -79,7 +79,9 @@ class TijdsregistratieController extends Controller
                 $registratie->checkIn = date('Y/m/d H:i:s', $data['checkInTime']);
                 $registratie->save();
             }
-        } else {
+        }
+        //
+        else {
             if ($vorigeTijdsregistratie == null || $vorigeTijdsregistratie->checkIn == null) {
                 $registratie->gebruiker_id = $gebruikerId;
                 $registratie->evenement_id = $evenementId;
@@ -100,6 +102,18 @@ class TijdsregistratieController extends Controller
             }
         }
 
+        return response()->json("");
+    }
+
+    public function postUpdateTijdsregistratie(Request $request){
+        $data = $request->all();
+        $tijdsregistratie = \App\Tijdsregistratie::find($data["id"]);
+        if(array_key_exists("manCheckIn",$data)){
+            $tijdsregistratie->manCheckIn = $data["manCheckIn"];
+        }else{
+            $tijdsregistratie->manCheckUit = $data["manCheckUit"];
+        }
+        $tijdsregistratie->save();
         return response()->json("");
     }
 }
