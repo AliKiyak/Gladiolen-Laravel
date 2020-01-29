@@ -10,7 +10,7 @@ class TijdsregistratieController extends Controller
 {
     public function index()
     {
-        $tijdsregistraties = \App\Tijdsregistratie::with('gebruiker')->get();
+        $tijdsregistraties = \App\Tijdsregistratie::with('gebruiker', 'evenement', 'vereniging')->get();
         return response()->json($tijdsregistraties);
     }
 
