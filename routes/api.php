@@ -20,8 +20,8 @@ Route::post('/vereniging', 'VerenigingController@registreer');
 
 //Voor mobile
 Route::get('/evenement/getGebruikersFromEvenement/{id}', 'EvenementController@getGebruikersFromEvenement');
-Route::get('/actieveEvenementen','EvenementController@getActieveEvenementen');
-Route::post('/postTijdsregistratie','TijdsregistratieController@postTijdsregistratie');
+Route::get('/actieveEvenementen', 'EvenementController@getActieveEvenementen');
+Route::post('/postTijdsregistratie', 'TijdsregistratieController@postTijdsregistratie');
 
 Route::group(['middleware' => 'auth:api'], function () {
     // Tshirt
@@ -61,6 +61,8 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // Tijdsregistratie
     Route::get('/tijdsregistratie', 'TijdsregistratieController@index');
+    Route::post('/tijdsregistratie', 'TijdsregistratieController@addTijdsregistratie');
+    Route::put('/tijdsregistratie/{id}', 'TijdsregistratieController@updateTijdsregistratie');
 });
 
 
