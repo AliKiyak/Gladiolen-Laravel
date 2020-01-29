@@ -55,7 +55,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     // EvenementVereniging
     Route::get('/evenementVereniging/getVerenigingenByEvenementId/{evenementId}', 'EvenementVerenigingController@getVerenigingenByEvenementId');
     Route::post('/evenementVereniging/postEvenementVereniging', 'EvenementVerenigingController@registreerEvenementVereniging');
-
+    Route::post('/evenementvereniging/deleteverenigingfromevenement', 'EvenementVerenigingController@deleteVerenigingFromEvenement');
     // Rol
     Route::get('/rol', 'RolController@index');
 
