@@ -8,6 +8,11 @@ use stdClass;
 
 class TijdsregistratieController extends Controller
 {
+    public function index()
+    {
+        $tijdsregistraties = \App\Tijdsregistratie::with('gebruiker')->get();
+        return response()->json($tijdsregistraties);
+    }
 
     public function postTijdsregistratie(Request $request)
     {

@@ -60,6 +60,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     // Rol
     Route::get('/rol', 'RolController@index');
 
+    // Tijdsregistratie
+    Route::get('/tijdsregistratie', 'TijdsregistratieController@index');
 });
 
 
