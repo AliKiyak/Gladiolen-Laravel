@@ -24,4 +24,13 @@ class EvenementVerenigingController extends Controller
 
         return response()->json($evenement);
     }
+
+    public function deleteVerenigingFromEvenement(Request $request) {
+        $data = $request->all();
+        $evenement = \App\Evenement::find($data["evenementid"]);
+
+        $evenement->verenigingen()->detach($data["verenigingid"]);
+        $data = ["success"=>"true"];
+        return response()->json($data);
+    }
 }
