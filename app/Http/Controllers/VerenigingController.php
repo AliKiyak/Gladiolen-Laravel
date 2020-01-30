@@ -32,7 +32,7 @@ class VerenigingController extends Controller
     public function getVerenigingMetLeden()
     {
         $user = Auth::user();
-        $vereniging = \App\Vereniging::with('gebruikers')->where('hoofdverantwoordelijke', $user->id)->first();
+        $vereniging = \App\Vereniging::with('gebruikers.tshirts')->where('hoofdverantwoordelijke', $user->id)->first();
         return response()->json($vereniging);
     }
 
