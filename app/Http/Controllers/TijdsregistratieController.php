@@ -18,7 +18,7 @@ class TijdsregistratieController extends Controller
     {
         $data = $request->all();
 
-        $gebruiker = \App\Gebruiker::find($data['gberuiker_id']);
+        $gebruiker = \App\Gebruiker::find($data['gebruiker_id']);
         $evenement = \App\Evenement::find($data['evenement_id']);
         $vereniging = \App\Vereniging::find($data['vereniging_id']);
 
