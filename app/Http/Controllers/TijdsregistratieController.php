@@ -35,6 +35,7 @@ class TijdsregistratieController extends Controller
     public function updateTijdsregistratie($id, Request $request)
     {
         $data = $request->all();
+
         $tijdsregistratie = \App\Tijdsregistratie::find($id)->update($data);
 
         return response()->json($tijdsregistratie);
