@@ -60,7 +60,7 @@
 
         public function getVerenigingenInAanvraag()
         {
-            $inaanvraag = \App\Vereniging::where('inAanvraag', 1)->get();
+            $inaanvraag = \App\Vereniging::where('inAanvraag', 1)->with('hoofd')->get();
             return response()->json($inaanvraag);
         }
 
