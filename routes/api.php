@@ -24,6 +24,7 @@ Route::get('/actieveEvenementen', 'EvenementController@getActieveEvenementen');
 Route::post('/postTijdsregistratie', 'TijdsregistratieController@postTijdsregistratie');
 Route::post('/postUpdateTijdsregistratie','TijdsregistratieController@postUpdateTijdsregistratie');
 Route::post('/postTablet','TabletController@updateTablet');
+Route::post('/postMultTikkingen','TijdsregistratieController@postMultipleTijdsregistraties');
 
 
 
