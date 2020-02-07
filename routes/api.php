@@ -22,11 +22,9 @@ Route::post('/vereniging', 'VerenigingController@registreer');
 Route::get('/evenement/getGebruikersFromEvenement/{id}', 'EvenementController@getGebruikersFromEvenement');
 Route::get('/actieveEvenementen', 'EvenementController@getActieveEvenementen');
 Route::post('/postTijdsregistratie', 'TijdsregistratieController@postTijdsregistratie');
-Route::post('/postUpdateTijdsregistratie','TijdsregistratieController@postUpdateTijdsregistratie');
-Route::post('/postTablet','TabletController@updateTablet');
-Route::post('/postMultTikkingen','TijdsregistratieController@postMultipleTijdsregistraties');
-
-
+Route::post('/postUpdateTijdsregistratie', 'TijdsregistratieController@postUpdateTijdsregistratie');
+Route::post('/postTablet', 'TabletController@updateTablet');
+Route::post('/postMultTikkingen', 'TijdsregistratieController@postMultipleTijdsregistraties');
 
 Route::group(['middleware' => 'auth:api'], function () {
     // Tshirt
@@ -57,17 +55,15 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('/vereniging/{id}', 'VerenigingController@updateVereniging');
     Route::get('/vereniging/verenigingbyidmetleden/{id}', 'VerenigingController@getVerenigingByIdMetLeden');
     // inAanvraag behandelen
-    Route::get('/vereniging/inAanvraag','VerenigingController@getVerenigingenInAanvraag');
-    Route::get('/vereniging/accept/{id}','VerenigingController@acceptVereniging');
-    Route::delete('/vereniging/deny/{id}','VerenigingController@denyVereniging');
-
-
-
+    Route::get('/vereniging/inAanvraag', 'VerenigingController@getVerenigingenInAanvraag');
+    Route::get('/vereniging/accept/{id}', 'VerenigingController@acceptVereniging');
+    Route::delete('/vereniging/deny/{id}', 'VerenigingController@denyVereniging');
 
     // EvenementVereniging
     Route::get('/evenementVereniging/getVerenigingenByEvenementId/{evenementId}', 'EvenementVerenigingController@getVerenigingenByEvenementId');
     Route::post('/evenementVereniging/postEvenementVereniging', 'EvenementVerenigingController@registreerEvenementVereniging');
     Route::post('/evenementvereniging/deleteverenigingfromevenement', 'EvenementVerenigingController@deleteVerenigingFromEvenement');
+
     // Rol
     Route::get('/rol', 'RolController@index');
 
@@ -75,6 +71,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/tijdsregistratie', 'TijdsregistratieController@index');
     Route::post('/tijdsregistratie', 'TijdsregistratieController@addTijdsregistratie');
     Route::put('/tijdsregistratie/{id}', 'TijdsregistratieController@updateTijdsregistratie');
+
+    // Taak
+    Route::get('/taak', 'TaakController@index');
+    Route::post('/taak', 'TaakController@addTaak');
+    Route::put('/taak/{id}', 'TaakController@updateTaak');
 });
 
 
