@@ -8,7 +8,7 @@ class TaakController extends Controller
 {
     public function index()
     {
-        $taken = \App\Taak::all();
+        $taken = \App\Taak::with('subtaak', 'taakgroep')->get();
         return response()->json($taken);
     }
 
