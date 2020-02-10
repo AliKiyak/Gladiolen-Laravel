@@ -77,8 +77,14 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/taak', 'TaakController@addTaak');
     Route::put('/taak/{id}', 'TaakController@updateTaak');
 
+    // Taakgroep
+    Route::get('/taakgroep', 'TaakgroepController@index');
+
+    // Subtaak
+    Route::get('/subtaak', 'SubtaakController@index');
+
     //Tablet status
-    Route::get('/tablet','TabletController@index');
+    Route::get('/tablet', 'TabletController@index');
 });
 
 
