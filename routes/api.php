@@ -41,7 +41,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/gebruiker/getGebruiker/{id}', 'GebruikerController@getGebruiker');
     Route::get('/gebruiker/getVrijwilligers/{id}', 'GebruikerController@getVrijwilligers');
     Route::get('/gebruiker/ingelogdegebruiker', 'GebruikerController@detailIngelogdeGebruiker');
-    Route::get('gebruiker/getKernleden', 'GebruikerController@getKernleden');
+    Route::get('/gebruiker/getKernleden', 'GebruikerController@getKernleden');
+    Route::put('/gebruiker/updateingelogdegebruiker', 'GebruikerController@updateIngelogdeGebruiker');
 
     // Evenement
     Route::get('/evenement', 'EvenementController@index');

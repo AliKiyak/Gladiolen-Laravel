@@ -109,6 +109,7 @@ class GebruikerController extends Controller
     public function updateLid($id, Request $request)
     {
         $data = $request->all();
+        $data['wachtwoord'] =
         $gebruiker = \App\Gebruiker::find($id)->update($data);
 
         return response()->json($gebruiker);
@@ -118,5 +119,19 @@ class GebruikerController extends Controller
     {
         $user = Auth::user();
         return response()->json($user);
+    }
+
+    public function updateIngelogdeGebruiker(Request $request) {
+        $data = $request->all();
+        if ($data['password'] == null) {
+            unset($data['password']);
+        } else {
+            $data['password'] = bcrypt($data['password']);
+        }
+        $user = Auth::user();
+
+        $updatedUser = \App\Gebruiker::find($user->id)->update($data);
+
+        return response()->json($updatedUser);
     }
 }
