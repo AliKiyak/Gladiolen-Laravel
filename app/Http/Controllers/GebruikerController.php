@@ -62,6 +62,15 @@ class GebruikerController extends Controller
         return response()->json($gebruiker);
     }
 
+    public function getVrijwilligers($verenigingId)
+    {
+        $vereniging = \App\Vereniging::with('gebruikers', 'gebruikers.rol')->find($verenigingId);
+        //var_dump($vereniging);
+        $vrijwilligers = $vereniging->gebruikers;
+        //var_dump($vrijwilligers);
+        return response()->json($vrijwilligers);
+    }
+
     public function getKernleden()
     {
         $kernleden = \App\Gebruiker::where('rol_id', 2)->get();
