@@ -55,6 +55,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/vereniging/verenigingingelogd', 'VerenigingController@getVerenigingVanIngelogdeGebruiker');
     Route::put('/vereniging/{id}', 'VerenigingController@updateVereniging');
     Route::get('/vereniging/verenigingbyidmetleden/{id}', 'VerenigingController@getVerenigingByIdMetLeden');
+
     // inAanvraag behandelen
     Route::get('/vereniging/inAanvraag', 'VerenigingController@getVerenigingenInAanvraag');
     Route::get('/vereniging/accept/{id}', 'VerenigingController@acceptVereniging');
@@ -77,6 +78,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/taak', 'TaakController@index');
     Route::post('/taak', 'TaakController@addTaak');
     Route::put('/taak/{id}', 'TaakController@updateTaak');
+    Route::delete('/taak/deleteTaak/{id}', 'TaakController@deleteTaak');
 
     // Taakgroep
     Route::get('/taakgroep', 'TaakgroepController@index');

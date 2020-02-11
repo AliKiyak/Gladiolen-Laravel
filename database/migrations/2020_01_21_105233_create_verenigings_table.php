@@ -18,14 +18,14 @@ class CreateVerenigingsTable extends Migration
             $table->string('naam');
             $table->unsignedBigInteger('hoofdverantwoordelijke');
             $table->unsignedBigInteger('tweedeverantwoordelijke')->nullable();
-            $table->unsignedBigInteger('contactpersoon')->nullable();
-            $table->string('rekeningnr')->nullable();
+            $table->unsignedBigInteger('contactpersoon');
+            $table->string('rekeningnr');
             $table->string('btwnr')->nullable();
             $table->string('straat')->nullable();
             $table->string('huisnummer')->nullable();
             $table->string('gemeente')->nullable();
             $table->string('postcode')->nullable();
-            $table->boolean('actief')->nullable();
+            $table->boolean('actief');
             $table->boolean('inAanvraag');
 
             //$table->foreign('hoofdverantwoordelijke')->references('id')->on('gebruikers')->onDelete('cascade')->onUpdate('cascade');

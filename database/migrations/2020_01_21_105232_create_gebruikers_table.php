@@ -19,15 +19,15 @@ class CreateGebruikersTable extends Migration
             $table->string('voornaam');
             $table->string('roepnaam')->nullable();
             $table->dateTime('geboortedatum');
-            $table->string('email');
-            $table->string('telefoon');
-            $table->string('opmerking');
+            $table->string('email')->nullable();
+            $table->string('telefoon')->nullable();
+            $table->string('opmerking')->nullable();
             $table->unsignedBigInteger('rol_id')->nullable();
-            $table->string('rijksregisternr');
+            $table->string('rijksregisternr')->nullable();
             $table->string('password')->nullable();
             $table->boolean('eersteAanmelding');
             $table->boolean('lunchpakket');
-            $table->boolean('actief')->nullable();
+            $table->boolean('actief');
             $table->string('foto')->nullable();
 
             // $table->foreign('tshirtId')->references('id')->on('tshirts')->onDelete('cascade')->onUpdate('cascade');
