@@ -28,4 +28,10 @@ class TaakController extends Controller
 
         return response()->json($taak);
     }
+
+    public function deleteTaak($id)
+    {
+        $taak = \App\Taak::find($id);
+        $taak->delete();
+    }
 }
