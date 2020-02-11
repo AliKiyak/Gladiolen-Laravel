@@ -17,6 +17,7 @@ Route::post('/gebruiker/registreerverantwoordelijke', 'GebruikerController@regis
 Route::post('/vereniging', 'VerenigingController@registreer');
 Route::post('/tshirt', 'TshirtController@create');
 Route::post('/vereniging', 'VerenigingController@registreer');
+Route::get('/tshirt', 'TshirtController@index');
 
 //Voor mobile
 Route::get('/evenement/getGebruikersFromEvenement/{id}', 'EvenementController@getGebruikersFromEvenement');
@@ -28,7 +29,7 @@ Route::post('/postMultTikkingen', 'TijdsregistratieController@postMultipleTijdsr
 
 Route::group(['middleware' => 'auth:api'], function () {
     // Tshirt
-    Route::get('/tshirt', 'TshirtController@index');
+//    Route::get('/tshirt', 'TshirtController@index');
     Route::put('/tshirt/{id}', 'TshirtController@updateLidGeslachtEnMaat');
 
     //Gebruiker
