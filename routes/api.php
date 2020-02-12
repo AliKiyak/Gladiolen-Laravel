@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/vereniging/verenigingingelogd', 'VerenigingController@getVerenigingVanIngelogdeGebruiker');
     Route::put('/vereniging/{id}', 'VerenigingController@updateVereniging');
     Route::get('/vereniging/verenigingbyidmetleden/{id}', 'VerenigingController@getVerenigingByIdMetLeden');
+    Route::get('/vereniging/verenigingbyidmetledentshirt/{id}', 'VerenigingController@getVerenigingByIdMetLedenTshirt');
     Route::get('/vereniging/getGeacepteerdeVerenigingen', 'VerenigingController@getGeacepteerdeVerenigingen');
 
     // inAanvraag behandelen

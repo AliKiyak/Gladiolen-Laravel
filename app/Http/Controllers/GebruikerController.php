@@ -24,31 +24,46 @@ class GebruikerController extends Controller
         }
     }
 
-    public function registreerVerantwoordelijke(gebruikerRegistratieRequest $request)
+    public function registreerVerantwoordelijke(Request $request)
     {
         $data = $request->all();
 
-        $rol = \App\Rol::find(3);
-        $data['password'] = bcrypt($data['password']);
-        $gebruiker = \App\Gebruiker::create($data);
-        $gebruiker->rol()->associate($rol);
+        if(\App\Gebruiker::where('email', $data['email'])->first() == null) {
+            $rol = \App\Rol::find(3);
+            if($data['password'] == null) {
+                $nieuwwachtwoord = substr(md5(microtime()),rand(0,26),10);
+                $data['password'] = bcrypt($nieuwwachtwoord);
+                $this->sendMail($data['email'], 'Account Gladiolen Aangemaakt', '<h1>Uw account voor Keizer Karel is
+                        aangemaakt!</h1><p>U kan nu inloggen met uw e-mail en het volgende wachtwoord ' . $nieuwwachtwoord.'</p>' .
+                    '<p>Vergeet niet om uw wachtwoord te veranderen!</p>');
+            } else {
+                $data['password'] = bcrypt($data['password']);
+            }
+            $gebruiker = \App\Gebruiker::create($data);
+            $gebruiker->rol()->associate($rol);
 
-        $gebruiker->save();
+            $gebruiker->save();
 
-        return response()->json($gebruiker);
+            return response()->json($gebruiker);
+        } else {
+            Throw new \Exception('email');
+        }
     }
 
-    public function registreerGebruiker(gebruikerRegistratieRequest $request)
+    public function registreerGebruiker(Request $request)
     {
         $data = $request->all();
-
+        $nieuwwachtwoord = substr(md5(microtime()),rand(0,26),10);
+        $data['password'] = bcrypt($nieuwwachtwoord);
         $rol = \App\Rol::find($data['rol_id']);
-
         $gebruiker = \App\Gebruiker::create($data);
+
         $gebruiker->rol()->associate($rol);
 
         $gebruiker->save();
-
+        $this->sendMail($gebruiker->email, 'Account Gladiolen Aangemaakt', '<h1>Uw account voor Keizer Karel is
+                        aangemaakt!</h1><p>U kan nu inloggen met uw e-mail en het volgende wachtwoord ' . $nieuwwachtwoord.'</p>' .
+            '<p>Vergeet niet om uw wachtwoord te veranderen!</p>');
         return response()->json($gebruiker);
     }
 
@@ -94,13 +109,15 @@ class GebruikerController extends Controller
     public function addLid(Request $request)
     {
         $data = $request->all();
+        if(\App\Gebruiker::where('rijksregisternr', $data['rijksregisternr'])->first() == null) {
+            $gebruiker = \App\Gebruiker::create($data);
+            $rol = \App\Rol::find(4);
 
-        $gebruiker = \App\Gebruiker::create($data);
-        $rol = \App\Rol::find(4);
-
-        $gebruiker->rol()->associate($rol);
-        $gebruiker->save();
-
+            $gebruiker->rol()->associate($rol);
+            $gebruiker->save();
+        } else {
+            $gebruiker = \App\Gebruiker::where('rijksregisternr', $data['rijksregisternr'])->first();
+        }
         $user = Auth::user();
         $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', $user->id)->first();
         $vereniging->gebruikers()->save($gebruiker);
@@ -153,31 +170,35 @@ class GebruikerController extends Controller
             $nieuwwachtwoord = substr(md5(microtime()),rand(0,26),10);
             $gebruiker->password = bcrypt($nieuwwachtwoord);
             $gebruiker->save();
-            $mail = new PHPMailer(true);
-            try {
-                $mail->SMTPDebug = 2;
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'testteamf12@gmail.com';
-                $mail->Password = 'wijzijnteamf12';
-                $mail->SMTPSecure = 'tls';
-                $mail->Port = 587;
-
-                $mail->setFrom('testteamf12@gmail.com');
-                $mail->addAddress($data['email']);
-                $mail->addReplyTo('testteamf12@gmail.com');
-
-                $mail->isHTML(true);
-                $mail->Subject = 'Wachtwoord resetten - Gladiolen';
-                $mail->Body = '<h1>Wachtwoord resetten</h1><p>Uw nieuw wachtwoord is ' . $nieuwwachtwoord . '</p>';
-                $mail->send();
-
-            } catch (Excemption $e) {
-                echo 'Message could not be found';
-            }
+            $this->sendMail($data['email'],'Wachtwoord resetten - Gladiolen', '<h1>Wachtwoord resetten</h1><p>Uw nieuw wachtwoord is ' . $nieuwwachtwoord . '</p>' );
         } else {
             throw new Exception('Gebruiker bestaat niet!');
+        }
+    }
+
+    public function sendMail($to, $subject ,$body) {
+        $mail = new PHPMailer(true);
+        try {
+            $mail->SMTPDebug = 0;
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'testteamf12@gmail.com';
+            $mail->Password = 'wijzijnteamf12';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+
+            $mail->setFrom('testteamf12@gmail.com');
+            $mail->addAddress($to);
+            $mail->addReplyTo('testteamf12@gmail.com');
+
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body = $body;
+            $mail->send();
+
+        } catch (Excemption $e) {
+            echo 'Message could not be found';
         }
     }
 }
