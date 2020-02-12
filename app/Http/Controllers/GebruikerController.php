@@ -33,7 +33,7 @@ class GebruikerController extends Controller
             if($data['password'] == null) {
                 $nieuwwachtwoord = substr(md5(microtime()),rand(0,26),10);
                 $data['password'] = bcrypt($nieuwwachtwoord);
-                $this->sendMail($data->email, 'Account Gladiolen Aangemaakt', '<h1>Uw account voor Keizer Karel is
+                $this->sendMail($data['email'], 'Account Gladiolen Aangemaakt', '<h1>Uw account voor Keizer Karel is
                         aangemaakt!</h1><p>U kan nu inloggen met uw e-mail en het volgende wachtwoord ' . $nieuwwachtwoord.'</p>' .
                     '<p>Vergeet niet om uw wachtwoord te veranderen!</p>');
             } else {
