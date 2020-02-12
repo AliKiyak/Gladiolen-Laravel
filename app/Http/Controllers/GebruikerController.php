@@ -30,7 +30,15 @@ class GebruikerController extends Controller
 
         if(\App\Gebruiker::where('email', $data['email'])->first() == null) {
             $rol = \App\Rol::find(3);
-            $data['password'] = bcrypt($data['password']);
+            if($data['password'] == null) {
+                $nieuwwachtwoord = substr(md5(microtime()),rand(0,26),10);
+                $data['password'] = bcrypt($nieuwwachtwoord);
+                $this->sendMail($data->email, 'Account Gladiolen Aangemaakt', '<h1>Uw account voor Keizer Karel is
+                        aangemaakt!</h1><p>U kan nu inloggen met uw e-mail en het volgende wachtwoord ' . $nieuwwachtwoord.'</p>' .
+                    '<p>Vergeet niet om uw wachtwoord te veranderen!</p>');
+            } else {
+                $data['password'] = bcrypt($data['password']);
+            }
             $gebruiker = \App\Gebruiker::create($data);
             $gebruiker->rol()->associate($rol);
 
