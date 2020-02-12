@@ -108,6 +108,7 @@ class ComposerStaticInita62d50134fbc74fa361680a00420aec1
             'Prophecy\\' => 9,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'O' => 
         array (
@@ -342,6 +343,10 @@ class ComposerStaticInita62d50134fbc74fa361680a00420aec1
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
         'Opis\\Closure\\' => 
         array (
             0 => __DIR__ . '/..' . '/opis/closure/src',
@@ -522,8 +527,11 @@ class ComposerStaticInita62d50134fbc74fa361680a00420aec1
         'App\\Http\\Controllers\\EvenementVerenigingController' => __DIR__ . '/../..' . '/app/Http/Controllers/EvenementVerenigingController.php',
         'App\\Http\\Controllers\\GebruikerController' => __DIR__ . '/../..' . '/app/Http/Controllers/GebruikerController.php',
         'App\\Http\\Controllers\\RolController' => __DIR__ . '/../..' . '/app/Http/Controllers/RolController.php',
+        'App\\Http\\Controllers\\SubtaakController' => __DIR__ . '/../..' . '/app/Http/Controllers/SubtaakController.php',
         'App\\Http\\Controllers\\TaakController' => __DIR__ . '/../..' . '/app/Http/Controllers/TaakController.php',
         'App\\Http\\Controllers\\TaakVanController' => __DIR__ . '/../..' . '/app/Http/Controllers/TaakVanController.php',
+        'App\\Http\\Controllers\\TaakgroepController' => __DIR__ . '/../..' . '/app/Http/Controllers/TaakgroepController.php',
+        'App\\Http\\Controllers\\TabletController' => __DIR__ . '/../..' . '/app/Http/Controllers/TabletController.php',
         'App\\Http\\Controllers\\TijdsregistratieController' => __DIR__ . '/../..' . '/app/Http/Controllers/TijdsregistratieController.php',
         'App\\Http\\Controllers\\TshirtController' => __DIR__ . '/../..' . '/app/Http/Controllers/TshirtController.php',
         'App\\Http\\Controllers\\TshirttypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/TshirttypeController.php',
@@ -547,6 +555,7 @@ class ComposerStaticInita62d50134fbc74fa361680a00420aec1
         'App\\Subtaak' => __DIR__ . '/../..' . '/app/Subtaak.php',
         'App\\Taak' => __DIR__ . '/../..' . '/app/Taak.php',
         'App\\Taakgroep' => __DIR__ . '/../..' . '/app/Taakgroep.php',
+        'App\\Tablet' => __DIR__ . '/../..' . '/app/Tablet.php',
         'App\\Tijdsregistratie' => __DIR__ . '/../..' . '/app/Tijdsregistratie.php',
         'App\\Tshirt' => __DIR__ . '/../..' . '/app/Tshirt.php',
         'App\\Tshirttype' => __DIR__ . '/../..' . '/app/Tshirttype.php',
@@ -2918,6 +2927,11 @@ class ComposerStaticInita62d50134fbc74fa361680a00420aec1
         'Opis\\Closure\\SecurityProvider' => __DIR__ . '/..' . '/opis/closure/src/SecurityProvider.php',
         'Opis\\Closure\\SelfReference' => __DIR__ . '/..' . '/opis/closure/src/SelfReference.php',
         'Opis\\Closure\\SerializableClosure' => __DIR__ . '/..' . '/opis/closure/src/SerializableClosure.php',
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/AssertionFailedError.php',

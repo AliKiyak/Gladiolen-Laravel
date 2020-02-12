@@ -18,6 +18,7 @@ Route::post('/vereniging', 'VerenigingController@registreer');
 Route::post('/tshirt', 'TshirtController@create');
 Route::post('/vereniging', 'VerenigingController@registreer');
 Route::get('/tshirt', 'TshirtController@index');
+Route::post('/gebruiker/resetpassword', 'GebruikerController@resetPassword');
 
 //Voor mobile
 Route::get('/evenement/getGebruikersFromEvenement/{id}', 'EvenementController@getGebruikersFromEvenement');
@@ -44,7 +45,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/gebruiker/ingelogdegebruiker', 'GebruikerController@detailIngelogdeGebruiker');
     Route::get('/gebruiker/getKernleden', 'GebruikerController@getKernleden');
     Route::put('/gebruiker/updateingelogdegebruiker', 'GebruikerController@updateIngelogdeGebruiker');
-    Route::get('/gebruiker/getAccountRol', 'GebruikerController@getAccountRol');
+    Route::get("/gebruiker/getAdmins", "GebruikerController@getAdmins");
 
     // Evenement
     Route::get('/evenement', 'EvenementController@index');
@@ -59,6 +60,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('/vereniging/{id}', 'VerenigingController@updateVereniging');
     Route::get('/vereniging/verenigingbyidmetleden/{id}', 'VerenigingController@getVerenigingByIdMetLeden');
     Route::get('/vereniging/verenigingbyidmetledentshirt/{id}', 'VerenigingController@getVerenigingByIdMetLedenTshirt');
+    Route::get('/vereniging/getGeacepteerdeVerenigingen', 'VerenigingController@getGeacepteerdeVerenigingen');
 
     // inAanvraag behandelen
     Route::get('/vereniging/inAanvraag', 'VerenigingController@getVerenigingenInAanvraag');

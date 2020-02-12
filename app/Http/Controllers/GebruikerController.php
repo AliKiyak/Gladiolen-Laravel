@@ -6,6 +6,8 @@ use App\Gebruiker;
 use App\Http\Requests\gebruikerRegistratieRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class GebruikerController extends Controller
 {
@@ -77,6 +79,12 @@ class GebruikerController extends Controller
         return response()->json($kernleden);
     }
 
+    public function getAdmins()
+    {
+        $admins = \App\Gebruiker::where('rol_id', 1)->get();
+        return response()->json($admins);
+    }
+
     public function getLid($id)
     {
         $lid = \App\Gebruiker::with('tshirts')->find($id);
@@ -121,7 +129,8 @@ class GebruikerController extends Controller
         return response()->json($user);
     }
 
-    public function updateIngelogdeGebruiker(Request $request) {
+    public function updateIngelogdeGebruiker(Request $request)
+    {
         $data = $request->all();
         if ($data['password'] == null) {
             unset($data['password']);
@@ -133,5 +142,42 @@ class GebruikerController extends Controller
         $updatedUser = \App\Gebruiker::find($user->id)->update($data);
 
         return response()->json($updatedUser);
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $data = $request->all();
+        $gebruiker = \App\Gebruiker::where('email', $data['email'])->first();
+
+        if ($gebruiker != null) {
+            $nieuwwachtwoord = substr(md5(microtime()),rand(0,26),10);
+            $gebruiker->password = bcrypt($nieuwwachtwoord);
+            $gebruiker->save();
+            $mail = new PHPMailer(true);
+            try {
+                $mail->SMTPDebug = 2;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'testteamf12@gmail.com';
+                $mail->Password = 'wijzijnteamf12';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+
+                $mail->setFrom('testteamf12@gmail.com');
+                $mail->addAddress($data['email']);
+                $mail->addReplyTo('testteamf12@gmail.com');
+
+                $mail->isHTML(true);
+                $mail->Subject = 'Wachtwoord resetten - Gladiolen';
+                $mail->Body = '<h1>Wachtwoord resetten</h1><p>Uw nieuw wachtwoord is ' . $nieuwwachtwoord . '</p>';
+                $mail->send();
+
+            } catch (Excemption $e) {
+                echo 'Message could not be found';
+            }
+        } else {
+            throw new Exception('Gebruiker bestaat niet!');
+        }
     }
 }
