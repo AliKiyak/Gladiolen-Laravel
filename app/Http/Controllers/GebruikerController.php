@@ -79,6 +79,12 @@ class GebruikerController extends Controller
         return response()->json($kernleden);
     }
 
+    public function getAdmins()
+    {
+        $admins = \App\Gebruiker::where('rol_id', 1)->get();
+        return response()->json($admins);
+    }
+
     public function getLid($id)
     {
         $lid = \App\Gebruiker::with('tshirts')->find($id);

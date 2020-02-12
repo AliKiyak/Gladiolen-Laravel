@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/gebruiker/ingelogdegebruiker', 'GebruikerController@detailIngelogdeGebruiker');
     Route::get('/gebruiker/getKernleden', 'GebruikerController@getKernleden');
     Route::put('/gebruiker/updateingelogdegebruiker', 'GebruikerController@updateIngelogdeGebruiker');
+    Route::get("/gebruiker/getAdmins", "GebruikerController@getAdmins");
 
     // Evenement
     Route::get('/evenement', 'EvenementController@index');
