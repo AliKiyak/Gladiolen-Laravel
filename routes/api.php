@@ -18,6 +18,7 @@ Route::post('/vereniging', 'VerenigingController@registreer');
 Route::post('/tshirt', 'TshirtController@create');
 Route::post('/vereniging', 'VerenigingController@registreer');
 Route::get('/tshirt', 'TshirtController@index');
+Route::post('/gebruiker/resetpassword', 'GebruikerController@resetPassword');
 
 //Voor mobile
 Route::get('/evenement/getGebruikersFromEvenement/{id}', 'EvenementController@getGebruikersFromEvenement');
