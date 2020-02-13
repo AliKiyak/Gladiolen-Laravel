@@ -73,12 +73,13 @@ class VerenigingController extends Controller
         return response()->json($inaanvraag);
     }
 
-    public function acceptVereniging($id)
+    public function acceptVereniging($id,$verid)
     {
-        $teAccepteren = \App\Vereniging::with('hoofd')->find($id)->first();
+        $teAccepteren = \App\Vereniging::with('hoofd')->find($id);
         $body = '<h1>Aanvraag voor ' . $teAccepteren->naam . '</h1><p>Uw aanvraag is geaccepteerd. U kan nu leden toevoegen aan uw vereniging.</p>';
         $this->sendMail($teAccepteren->hoofd->email, 'Aanvraag geaccepteerd', $body);
         $teAccepteren->inAanvraag = 0;
+        $teAccepteren->contactpersoon = $verid;
         $teAccepteren->save();
         return response()->json($teAccepteren);
     }

@@ -64,7 +64,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // inAanvraag behandelen
     Route::get('/vereniging/inAanvraag', 'VerenigingController@getVerenigingenInAanvraag');
-    Route::get('/vereniging/accept/{id}', 'VerenigingController@acceptVereniging');
+    Route::get('/vereniging/accept/{id}/{verid}', 'VerenigingController@acceptVereniging');
     Route::delete('/vereniging/deny/{id}', 'VerenigingController@denyVereniging');
 
     // EvenementVereniging
