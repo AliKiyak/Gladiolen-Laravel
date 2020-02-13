@@ -79,12 +79,10 @@ class GebruikerController extends Controller
         return response()->json($gebruiker);
     }
 
-    public function getVrijwilligers($verenigingId)
+    public function getVrijwilligersByVereniging($verenigingId)
     {
         $vereniging = \App\Vereniging::with('gebruikers', 'gebruikers.rol')->find($verenigingId);
-        //var_dump($vereniging);
         $vrijwilligers = $vereniging->gebruikers;
-        //var_dump($vrijwilligers);
         return response()->json($vrijwilligers);
     }
 
@@ -109,15 +107,12 @@ class GebruikerController extends Controller
     public function addLid(Request $request)
     {
         $data = $request->all();
-        if(\App\Gebruiker::where('rijksregisternr', $data['rijksregisternr'])->first() == null) {
             $gebruiker = \App\Gebruiker::create($data);
             $rol = \App\Rol::find(4);
 
             $gebruiker->rol()->associate($rol);
             $gebruiker->save();
-        } else {
-            $gebruiker = \App\Gebruiker::where('rijksregisternr', $data['rijksregisternr'])->first();
-        }
+
         $user = Auth::user();
         $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', $user->id)->first();
         $vereniging->gebruikers()->save($gebruiker);
