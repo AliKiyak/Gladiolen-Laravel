@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Tijdsregistratie;
+    use http\Env\Response;
     use Illuminate\Http\Request;
     use stdClass;
 
@@ -52,7 +53,6 @@
             $evenementId = $data['evenementId'];
 
             $vorigeTijdsregistratie = \App\Tijdsregistratie::where(['gebruiker_id' => $gebruikerId, 'evenement_id' => $evenementId, 'vereniging_id' => $verenigingId])->orderBy('id', 'desc')->first();
-
             if (array_key_exists("checkInTime", $data)) {
                 if ($vorigeTijdsregistratie == null) {
                     $registratie->gebruiker_id = $gebruikerId;
