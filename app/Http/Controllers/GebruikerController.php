@@ -171,6 +171,24 @@ class GebruikerController extends Controller
         }
     }
 
+    public function importArrayGebruikers(Request $request) {
+        $data = $request->all();
+
+        foreach ($data['gebruikers'] as $mogelijkegebruiker) {
+            $vereniging = \App\Vereniging::where('naam', $mogelijkegebruiker['vereniging'])->first();
+            if ( $vereniging !== null ) {
+                if (\App\Gebruiker::where('rijksregisternr', $mogelijkegebruiker['rijksregisternr']) != null) {
+                    unset($mogelijkegebruiker['vereniging']);
+                    $gebruiker = \App\Gebruiker::create($mogelijkegebruiker);
+                    $vereniging->gebruikers()->save($gebruiker);
+                } else {
+                    $gebruiker = \App\Gebruiker::where('rijksregisternr', $mogelijkegebruiker['rijksregisternr']);
+                    $vereniging->gebruikers()->save($gebruiker);
+                }
+            }
+        }
+        return response()->json(['Gebruikers' => 'Aangemaakt']);
+    }
     public function sendMail($to, $subject ,$body) {
         $mail = new PHPMailer(true);
         try {
