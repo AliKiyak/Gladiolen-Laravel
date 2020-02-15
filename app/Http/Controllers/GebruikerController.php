@@ -69,7 +69,7 @@ class GebruikerController extends Controller
 
     public function index()
     {
-        $lids = \App\Gebruiker::with('rol')->get();
+        $lids = \App\Gebruiker::with('tshirts','rol')->get();
         return response()->json($lids);
     }
 
