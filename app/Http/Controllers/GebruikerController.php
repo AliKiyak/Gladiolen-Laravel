@@ -71,9 +71,10 @@
 
         public function index()
         {
-            $lids = \App\Gebruiker::with('rol')->get();
+            $lids = \App\Gebruiker::with('tshirts','rol')->get();
             return response()->json($lids);
         }
+
 
         public function getGebruiker($id)
         {
@@ -183,10 +184,10 @@
                     if (\App\Gebruiker::where('rijksregisternr', $mogelijkegebruiker['rijksregisternr'])->first() == null) {
                         unset($mogelijkegebruiker['vereniging']);
                         $gebruiker = \App\Gebruiker::create($mogelijkegebruiker);
-                        $vereniging->gebruikers()->sync([$gebruiker->id],false);
+                        $vereniging->gebruikers()->sync([$gebruiker->id], false);
                     } else {
                         $gebruiker = \App\Gebruiker::where('rijksregisternr', $mogelijkegebruiker['rijksregisternr'])->first();
-                        $vereniging->gebruikers()->sync([$gebruiker->id],false);
+                        $vereniging->gebruikers()->sync([$gebruiker->id], false);
                     }
                 }
             }
