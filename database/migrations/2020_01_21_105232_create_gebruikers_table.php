@@ -23,7 +23,7 @@ class CreateGebruikersTable extends Migration
             $table->string('telefoon')->nullable();
             $table->string('opmerking')->nullable();
             $table->unsignedBigInteger('rol_id')->nullable();
-            $table->string('rijksregisternr')->nullable();
+            $table->string('rijksregisternr');
             $table->string('password')->nullable();
             $table->boolean('eersteAanmelding');
             $table->boolean('lunchpakket');
