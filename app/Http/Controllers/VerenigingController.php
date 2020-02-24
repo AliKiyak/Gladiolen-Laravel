@@ -11,7 +11,7 @@ class VerenigingController extends Controller
 {
     public function index()
     {
-        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contact')->get();
+        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contact')->orderBy('id', 'desc')->get();
         return response()->json($verenigings);
     }
 
@@ -23,7 +23,7 @@ class VerenigingController extends Controller
 
     public function getGeacepteerdeVerenigingen()
     {
-        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contact')->where('inAanvraag', 0)->get();
+        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contact')->where('inAanvraag', 0)->orderBy('id', 'desc')->get();
         return response()->json($verenigings);
     }
 
@@ -33,6 +33,8 @@ class VerenigingController extends Controller
 
         $vereniging = \App\Vereniging::create($data);
         $vereniging->save();
+
+        $vereniging->gebruikers()->save($vereniging->hoofd);
 
         $body = '<h1>Aanvraag voor ' . $vereniging->naam . '</h1><p>Uw aanvraag is verzonden en wordt zo snel mogelijk verwerkt door onze medewerkers</p>';
         $this->sendMail($vereniging->hoofd->email, 'Aanvraag verzonden', $body);

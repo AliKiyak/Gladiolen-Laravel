@@ -77,7 +77,7 @@
 
         public function index()
         {
-            $lids = \App\Gebruiker::with('tshirts','rol')->get();
+            $lids = \App\Gebruiker::with('tshirts','rol')->orderBy('voornaam', 'asc')->get();
             return response()->json($lids);
         }
 

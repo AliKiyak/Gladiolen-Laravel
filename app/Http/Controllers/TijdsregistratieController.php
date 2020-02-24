@@ -11,7 +11,7 @@
     {
         public function index()
         {
-            $tijdsregistraties = \App\Tijdsregistratie::with('gebruiker', 'evenement', 'vereniging')->get();
+            $tijdsregistraties = \App\Tijdsregistratie::with('gebruiker', 'evenement', 'vereniging')->orderBy('id', 'desc')->get();
             return response()->json($tijdsregistraties);
         }
 
