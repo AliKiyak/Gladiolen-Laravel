@@ -11,7 +11,7 @@ class VerenigingController extends Controller
 {
     public function index()
     {
-        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contact')->get();
+        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contact')->orderBy('id', 'desc')->get();
         return response()->json($verenigings);
     }
 
@@ -23,7 +23,7 @@ class VerenigingController extends Controller
 
     public function getGeacepteerdeVerenigingen()
     {
-        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contact')->where('inAanvraag', 0)->get();
+        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contact')->where('inAanvraag', 0)->orderBy('id', 'desc')->get();
         return response()->json($verenigings);
     }
 
@@ -33,6 +33,8 @@ class VerenigingController extends Controller
 
         $vereniging = \App\Vereniging::create($data);
         $vereniging->save();
+
+        $vereniging->gebruikers()->save($vereniging->hoofd);
 
         $body = '<h1>Aanvraag voor ' . $vereniging->naam . '</h1><p>Uw aanvraag is verzonden en wordt zo snel mogelijk verwerkt door onze medewerkers</p>';
         $this->sendMail($vereniging->hoofd->email, 'Aanvraag verzonden', $body);
@@ -75,9 +77,13 @@ class VerenigingController extends Controller
 
     public function acceptVereniging($id,$verid)
     {
-        $teAccepteren = \App\Vereniging::with('hoofd')->find($id);
+        $teAccepteren = \App\Vereniging::with('hoofd', 'contact')->find($id);
         $body = '<h1>Aanvraag voor ' . $teAccepteren->naam . '</h1><p>Uw aanvraag is geaccepteerd. U kan nu leden toevoegen aan uw vereniging.</p>';
         $this->sendMail($teAccepteren->hoofd->email, 'Aanvraag geaccepteerd', $body);
+
+        $bodyContact = '<h1>Aanvraag voor ' . $teAccepteren->naam . '</h1><p>Deze vereniging is geacepteerd door een amdin.</p>';
+        $this->sendMail($teAccepteren->contact->email, 'Aanvraag geaccepteerd', $bodyContact);
+
         $teAccepteren->inAanvraag = 0;
         $teAccepteren->contactpersoon = $verid;
         $teAccepteren->save();

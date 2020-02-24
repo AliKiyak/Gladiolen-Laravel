@@ -8,7 +8,7 @@ class EvenementController extends Controller
 {
     public function index()
     {
-        $evenements = \App\Evenement::with('verenigingen')->get();;
+        $evenements = \App\Evenement::with('verenigingen')->orderBy('id', 'desc')->get();;
         return response()->json($evenements);
     }
 
@@ -38,7 +38,7 @@ class EvenementController extends Controller
 
     public function getActieveEvenementen()
     {
-        $evenementen = \App\Evenement::where('actief', 1)->get();
+        $evenementen = \App\Evenement::where('actief', 1)->orderBy('id', 'desc')->get();
         return response()->json($evenementen);
     }
 
