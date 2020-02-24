@@ -97,7 +97,7 @@
 
         public function getKernleden()
         {
-            $kernleden = \App\Gebruiker::where(['rol_id' => 2, 'rol_id' => 1])->get();
+            $kernleden = \App\Gebruiker::where(['rol_id' => 2])->get();
             return response()->json($kernleden);
         }
 
