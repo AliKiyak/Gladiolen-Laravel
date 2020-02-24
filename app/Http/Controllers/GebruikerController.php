@@ -161,6 +161,7 @@
                 unset($data['password']);
             } else {
                 $data['password'] = bcrypt($data['password']);
+                $data['eersteAanmelding'] = 0;
             }
             $user = Auth::user();
 
@@ -177,6 +178,7 @@
             if ($gebruiker != null) {
                 $nieuwwachtwoord = substr(md5(microtime()), rand(0, 26), 10);
                 $gebruiker->password = bcrypt($nieuwwachtwoord);
+                $gebruiker->eersteAanmelding = 1;
                 $gebruiker->save();
                 $this->sendMail($data['email'], 'Wachtwoord resetten - Gladiolen', '<h1>Wachtwoord resetten</h1><p>Uw nieuw wachtwoord is ' . $nieuwwachtwoord . '</p>');
             } else {
