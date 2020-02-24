@@ -135,8 +135,11 @@
 
         public function deleteLid($id)
         {
-            $lid = \App\Gebruiker::find($id);
-            $lid->delete();
+            $user = Auth::user();
+            $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', $user->id)->first();
+            $vereniging->gebruikers()->detach($id);
+//            $lid = \App\Gebruiker::find($id);
+//            $lid->delete();
         }
 
         public function updateLid($id, Request $request)
