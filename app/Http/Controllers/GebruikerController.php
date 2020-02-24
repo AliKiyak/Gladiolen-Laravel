@@ -220,4 +220,16 @@
                 echo 'Message could not be found';
             }
         }
+
+        public function makeAnonymous($userId){
+            $user = \App\Gebruiker::find($userId);
+            $user->name = "Ano";
+            $user->voornaam = "Niem";
+            $user->roepnaam = "";
+            $user->geboortedatum = date('Y/m/d');
+            $user->email = "anoniem@mail.be";
+            $user->telefoon = "0000";
+            $user->opmerking = "Deze gebruiker is verwijderd en anoniem gemaakt";
+            $user->rijksregisternr = "111111";
+        }
     }

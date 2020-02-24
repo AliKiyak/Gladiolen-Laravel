@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::put('/gebruiker/updateingelogdegebruiker', 'GebruikerController@updateIngelogdeGebruiker');
     Route::get("/gebruiker/getAdmins", "GebruikerController@getAdmins");
     Route::post('/gebruiker/import', 'GebruikerController@importArrayGebruikers');
+    Route::get('api/gebruiker/delete/{userId}', 'GebruikerController@makeAnonymous');
 
     // Evenement
     Route::get('/evenement', 'EvenementController@index');
