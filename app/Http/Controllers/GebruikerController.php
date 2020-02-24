@@ -19,8 +19,14 @@
 
             if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
                 $user = Auth::user();
-                $success['token'] = $user->createToken('MyApp')->accessToken;
-                return response()->json($success);
+                $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', $user->id)->first();
+                if($vereniging->actief == 0) {
+                    return response()->json(['error' => 'Uw vereniging is nog niet actief'], 444);
+                } else {
+                    $success['token'] = $user->createToken('MyApp')->accessToken;
+                    return response()->json($success);
+                }
+
             } else {
                 return response()->json(['error' => 'Unauthorised'], 401);
             }
