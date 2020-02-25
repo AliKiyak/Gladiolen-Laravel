@@ -19,8 +19,14 @@
 
             if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
                 $user = Auth::user();
-                $success['token'] = $user->createToken('MyApp')->accessToken;
-                return response()->json($success);
+                $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', $user->id)->first();
+                if($vereniging->actief == 0) {
+                    return response()->json(['error' => 'Uw vereniging is nog niet actief'], 444);
+                } else {
+                    $success['token'] = $user->createToken('MyApp')->accessToken;
+                    return response()->json($success);
+                }
+
             } else {
                 return response()->json(['error' => 'Unauthorised'], 401);
             }
@@ -71,7 +77,7 @@
 
         public function index()
         {
-            $lids = \App\Gebruiker::with('tshirts','rol')->get();
+            $lids = \App\Gebruiker::with('tshirts','rol')->orderBy('voornaam', 'asc')->get();
             return response()->json($lids);
         }
 
@@ -91,7 +97,7 @@
 
         public function getKernleden()
         {
-            $kernleden = \App\Gebruiker::where(['rol_id' => 2, 'rol_id' => 1])->get();
+            $kernleden = \App\Gebruiker::where(['rol_id' => 2])->get();
             return response()->json($kernleden);
         }
 
@@ -110,12 +116,16 @@
         public function addLid(Request $request)
         {
             $data = $request->all();
-            $gebruiker = \App\Gebruiker::create($data);
-            $rol = \App\Rol::find(4);
 
-            $gebruiker->rol()->associate($rol);
-            $gebruiker->save();
+            if(\App\Gebruiker::where('rijksregisternr', $data['rijksregisternr'])->first() == null) {
+                $gebruiker = \App\Gebruiker::create($data);
+                $rol = \App\Rol::find(4);
 
+                $gebruiker->rol()->associate($rol);
+                $gebruiker->save();
+            } else {
+                $gebruiker = \App\Gebruiker::where('rijksregisternr', $data['rijksregisternr'])->first();
+            }
             $user = Auth::user();
             $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', $user->id)->first();
             $vereniging->gebruikers()->save($gebruiker);
@@ -140,8 +150,11 @@
 
         public function deleteLid($id)
         {
-            $lid = \App\Gebruiker::find($id);
-            $lid->delete();
+            $user = Auth::user();
+            $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', $user->id)->first();
+            $vereniging->gebruikers()->detach($id);
+//            $lid = \App\Gebruiker::find($id);
+//            $lid->delete();
         }
 
         public function updateLid($id, Request $request)
@@ -166,6 +179,7 @@
                 unset($data['password']);
             } else {
                 $data['password'] = bcrypt($data['password']);
+                $data['eersteAanmelding'] = 0;
             }
             $user = Auth::user();
 
@@ -182,6 +196,7 @@
             if ($gebruiker != null) {
                 $nieuwwachtwoord = substr(md5(microtime()), rand(0, 26), 10);
                 $gebruiker->password = bcrypt($nieuwwachtwoord);
+                $gebruiker->eersteAanmelding = 1;
                 $gebruiker->save();
                 $this->sendMail($data['email'], 'Wachtwoord resetten - Gladiolen', '<h1>Wachtwoord resetten</h1><p>Uw nieuw wachtwoord is ' . $nieuwwachtwoord . '</p>');
             } else {
@@ -234,5 +249,18 @@
             } catch (Excemption $e) {
                 echo 'Message could not be found';
             }
+        }
+
+        public function makeAnonymous($userId){
+            $user = \App\Gebruiker::find($userId);
+            $user->name = "Ano";
+            $user->voornaam = "Niem";
+            $user->roepnaam = "";
+            $user->geboortedatum = date('Y/m/d');
+            $user->email = "anoniem@mail.be";
+            $user->telefoon = "0000";
+            $user->opmerking = "Deze gebruiker is verwijderd en anoniem gemaakt";
+            $user->rijksregisternr = "111111";
+            $user->save();
         }
     }

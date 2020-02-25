@@ -20,7 +20,7 @@ class EvenementVerenigingController extends Controller
         $evenement = \App\Evenement::find($data["evenementid"]);
         $vereniging = \App\Vereniging::find($data["verenigingid"]);
 
-        $evenement->verenigingen()->save($vereniging);
+        $evenement->verenigingen()->sync([$vereniging->id],false);
 
         return response()->json($evenement);
     }
