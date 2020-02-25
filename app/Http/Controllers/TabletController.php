@@ -14,7 +14,7 @@
 
             $dezeTablet = \App\Tablet::where("tabletCode", $data["tabletCode"])->first();
             if ($dezeTablet == null) {
-                $tablet = new Tablet();
+                $tablet = \App\Tablet::create();
                 $tablet->tabletCode = $data["tabletCode"];
                 $tablet->tabletnaam = $data["tabletnaam"];
                 $tablet->batterijpercentage = $data["batterijpercentage"];
