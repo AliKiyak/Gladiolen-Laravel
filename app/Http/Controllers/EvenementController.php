@@ -8,7 +8,7 @@ class EvenementController extends Controller
 {
     public function index()
     {
-        $evenements = \App\Evenement::with('verenigingen')->orderBy('id', 'desc')->get();;
+        $evenements = \App\Evenement::with('verenigingen')->orderBy("actief",'desc')->orderBy('id', 'desc')->get();;
         return response()->json($evenements);
     }
 
