@@ -14,12 +14,9 @@
 
             $dezeTablet = \App\Tablet::where("tabletCode", $data["tabletCode"])->first();
             if ($dezeTablet == null) {
-                $tablet = \App\Tablet::create();
-                $tablet->tabletCode = $data["tabletCode"];
-                $tablet->tabletnaam = $data["tabletnaam"];
-                $tablet->batterijpercentage = $data["batterijpercentage"];
-                $tablet->laatstGeupdatet = date_create()->format('Y-m-d H:i:s');
-                $tablet->save();
+                $data["laatstGeupdatet"] = date_create()->format('Y-m-d H:i:s');
+                $tablet = \App\Tablet::create($data);
+
             } else {
                 $dezeTablet->tabletnaam = $data["tabletnaam"];
                 $dezeTablet->batterijpercentage = $data["batterijpercentage"];
