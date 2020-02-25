@@ -128,7 +128,7 @@
             }
             $user = Auth::user();
             $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', $user->id)->first();
-            $vereniging->gebruikers()->save($gebruiker);
+            $vereniging->gebruikers()->sync([$gebruiker->id],false);
 
             return response()->json($gebruiker);
         }
@@ -136,14 +136,19 @@
         public function addLidAdmin(Request $request, $verenigingId)
         {
             $data = $request->all();
-            $gebruiker = \App\Gebruiker::create($data);
-            $rol = \App\Rol::find(4);
 
-            $gebruiker->rol()->associate($rol);
-            $gebruiker->save();
+            if(\App\Gebruiker::where('rijksregisternr', $data['rijksregisternr'])->first() == null) {
+                $gebruiker = \App\Gebruiker::create($data);
+                $rol = \App\Rol::find(4);
 
-            $vereniging = \App\Vereniging::find($verenigingId)->first();
-            $vereniging->gebruikers()->save($gebruiker);
+                $gebruiker->rol()->associate($rol);
+                $gebruiker->save();
+            } else {
+                $gebruiker = \App\Gebruiker::where('rijksregisternr', $data['rijksregisternr'])->first();
+            }
+
+            $vereniging = \App\Vereniging::where('id', $verenigingId)->first();
+            $vereniging->gebruikers()->sync([$gebruiker->id],false);
 
             return response()->json($gebruiker);
         }
