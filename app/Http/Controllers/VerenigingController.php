@@ -67,6 +67,12 @@ class VerenigingController extends Controller
         return response()->json($vereniging);
     }
 
+    public function getVerenigingByIdMetLedenTshirt($id)
+        {
+            $vereniging = \App\Vereniging::with('gebruikers.tshirts')->where('id', $id)->first();
+            return response()->json($vereniging);
+        }
+
     public function getVerenigingenInAanvraag()
     {
         $inaanvraag = \App\Vereniging::where('inAanvraag', 1)->with('hoofd')->get();

@@ -123,6 +123,21 @@
             return response()->json($gebruiker);
         }
 
+        public function addLidAdmin(Request $request, $verenigingId)
+        {
+            $data = $request->all();
+            $gebruiker = \App\Gebruiker::create($data);
+            $rol = \App\Rol::find(4);
+
+            $gebruiker->rol()->associate($rol);
+            $gebruiker->save();
+
+            $vereniging = \App\Vereniging::find($verenigingId)->first();
+            $vereniging->gebruikers()->save($gebruiker);
+
+            return response()->json($gebruiker);
+        }
+
         public function deleteLid($id)
         {
             $lid = \App\Gebruiker::find($id);

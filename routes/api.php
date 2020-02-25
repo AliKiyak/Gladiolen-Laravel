@@ -27,6 +27,8 @@ Route::post('/postTijdsregistratie', 'TijdsregistratieController@postTijdsregist
 Route::post('/postUpdateTijdsregistratie', 'TijdsregistratieController@postUpdateTijdsregistratie');
 Route::post('/postTablet', 'TabletController@updateTablet');
 Route::post('/postMultTikkingen', 'TijdsregistratieController@postMultipleTijdsregistraties');
+//Voor lora
+Route::post('/tijdsregistratie/loraTijdsregistratie/{string}', 'TijdsregistratieController@loraTijdsregistratie');
 
 Route::group(['middleware' => 'auth:api'], function () {
     // Tshirt
@@ -36,6 +38,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     //Gebruiker
     Route::get('/gebruiker', 'GebruikerController@index');
     Route::post('/gebruiker/addlid', 'GebruikerController@addLid');
+    Route::post('/gebruiker/addlidadmin/{verenigingId}', 'GebruikerController@addLidAdmin');
     Route::delete('/gebruiker/deletelid/{id}', 'GebruikerController@deleteLid');
     Route::get('/gebruiker/getlid/{id}', 'GebruikerController@getLid');
     Route::put('/gebruiker/updatelid/{id}', 'GebruikerController@updateLid');
@@ -75,11 +78,14 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // Rol
     Route::get('/rol', 'RolController@index');
+    Route::get('/rol/getRol','RolController@getRol');
+    Route::get('/rol/getRolIdWhereNaam/{naam}','RolController@getRolIdWhereNaam');
 
     // Tijdsregistratie
     Route::get('/tijdsregistratie', 'TijdsregistratieController@index');
     Route::post('/tijdsregistratie', 'TijdsregistratieController@addTijdsregistratie');
     Route::put('/tijdsregistratie/{id}', 'TijdsregistratieController@updateTijdsregistratie');
+
 
     // Taak
     Route::get('/taak', 'TaakController@index');

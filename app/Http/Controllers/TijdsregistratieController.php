@@ -136,4 +136,11 @@
             $tijdsregistratie->save();
             return response()->json("");
         }
+
+        public function loraTijdsregistratie(String $data){
+            $ex = explode('.',$data);
+            $last = end($ex);
+
+            return($last);
+        }
     }
