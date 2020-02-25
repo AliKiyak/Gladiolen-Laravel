@@ -246,6 +246,8 @@
             $user->telefoon = "0000";
             $user->opmerking = "Deze gebruiker is verwijderd en anoniem gemaakt";
             $user->rijksregisternr = "111111";
+            $user->actief = 0;
+            $user->password = null;
             $user->save();
         }
     }
