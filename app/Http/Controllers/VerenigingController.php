@@ -71,7 +71,7 @@ class VerenigingController extends Controller
 
     public function getVerenigingByIdMetLedenTshirt($id)
         {
-            $vereniging = \App\Vereniging::with('gebruikers.tshirts')->where('id', $id)->first();
+            $vereniging = \App\Vereniging::with('gebruikers.tshirts')->where(['id'=> $id, 'actief'=>1])->first();
             return response()->json($vereniging);
         }
 
