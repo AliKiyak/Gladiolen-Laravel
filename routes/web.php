@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    $gebruikers = \App\Gebruiker::with('rol')->get();
-    dd($gebruikers);
+       dd("Backend werkt, is dat niet leuk?");
+
 });
 
 // TshirtController Routes
