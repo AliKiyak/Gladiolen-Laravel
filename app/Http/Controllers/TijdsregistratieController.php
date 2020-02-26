@@ -6,6 +6,7 @@
     use http\Env\Response;
     use Illuminate\Http\Request;
     use stdClass;
+    use Datetime;
 
     class TijdsregistratieController extends Controller
     {
@@ -137,10 +138,58 @@
             return response()->json("");
         }
 
-        public function loraTijdsregistratie(String $data){
-            $ex = explode('.',$data);
+        public function loraTijdsregistratie(Request $request)
+        {
+            $data=$request->all();
+
+            $ex = explode('.',$data['api_code']);
             $last = end($ex);
 
-            return($last);
+            $registratie = new Tijdsregistratie;
+
+            $gebruikerId = $ex[0];
+            //$verenigingId = $data['verenigingId'];
+            $vereniging = \App\Vereniging::where('naam', 'Lora')->first();
+            $verenigingId = $vereniging->id;
+            $evenement = \App\Evenement::where('naam', 'Lora')->first();
+            $evenementId = $evenement->id;
+            $datetime = new Datetime();
+
+            $vorigeTijdsregistratie = \App\Tijdsregistratie::where('gebruiker_id', $gebruikerId)->orderBy('id', 'desc')->first();
+
+            if($ex[1] == 0){
+                $registratie->gebruiker_id = $gebruikerId;
+                $registratie->evenement_id = $evenementId;
+                $registratie->vereniging_id = $verenigingId;
+                $registratie->checkIn = date('Y/m/d H:i:s', $datetime->format('U'));
+                $registratie->save();
+                return response()->json($registratie);
+            }
+            else if($ex[1] == 1){
+
+                if ($vorigeTijdsregistratie !== null) {
+                    if($vorigeTijdsregistratie->checkUit !== null){
+                        $registratie->gebruiker_id = $gebruikerId;
+                        $registratie->evenement_id = $evenementId;
+                        $registratie->vereniging_id = $verenigingId;
+                        $registratie->checkUit = date('Y/m/d H:i:s', $datetime->format('U'));
+                        $registratie->save();
+                        return response()->json($registratie);
+                    }
+                    else{
+                        $vorigeTijdsregistratie->checkUit = date('Y/m/d H:i:s', $datetime->format('U'));
+                        $vorigeTijdsregistratie->save();
+                        return response()->json($vorigeTijdsregistratie);
+                    }
+                }
+                else{
+                    $registratie->gebruiker_id = $gebruikerId;
+                    $registratie->evenement_id = $evenementId;
+                    $registratie->vereniging_id = $verenigingId;
+                    $registratie->checkUit = date('Y/m/d H:i:s', $datetime->format('U'));
+                    $registratie->save();
+                    return response()->json($registratie);
+                }
+            }
         }
     }

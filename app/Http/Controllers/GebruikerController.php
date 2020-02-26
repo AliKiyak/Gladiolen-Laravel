@@ -162,6 +162,12 @@
 //            $lid->delete();
         }
 
+        public function deleteLidAdmin($verenigingId, $userId)
+        {
+            $vereniging = \App\Vereniging::where('id', $verenigingId)->first();
+            $vereniging->gebruikers()->detach($userId);
+        }
+
         public function updateLid($id, Request $request)
         {
             $data = $request->all();

@@ -28,7 +28,7 @@ Route::post('/postUpdateTijdsregistratie', 'TijdsregistratieController@postUpdat
 Route::post('/postTablet', 'TabletController@updateTablet');
 Route::post('/postMultTikkingen', 'TijdsregistratieController@postMultipleTijdsregistraties');
 //Voor lora
-Route::post('/tijdsregistratie/loraTijdsregistratie/{string}', 'TijdsregistratieController@loraTijdsregistratie');
+Route::post('/tijdsregistratie/loraTijdsregistratie', 'TijdsregistratieController@loraTijdsregistratie');
 
 Route::group(['middleware' => 'auth:api'], function () {
     // Tshirt
@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/gebruiker/addlid', 'GebruikerController@addLid');
     Route::post('/gebruiker/addlidadmin/{verenigingId}', 'GebruikerController@addLidAdmin');
     Route::delete('/gebruiker/deletelid/{id}', 'GebruikerController@deleteLid');
+    Route::delete('/gebruiker/deletelidadmin/{verenigingId}/{userId}', 'GebruikerController@deleteLidAdmin');
     Route::get('/gebruiker/getlid/{id}', 'GebruikerController@getLid');
     Route::put('/gebruiker/updatelid/{id}', 'GebruikerController@updateLid');
     Route::post('/gebruiker/registreergebruiker', 'GebruikerController@registreerGebruiker');
