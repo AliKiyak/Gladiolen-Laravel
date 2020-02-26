@@ -65,7 +65,7 @@ class VerenigingController extends Controller
 
     public function getVerenigingByIdMetLeden($id)
     {
-        $vereniging = \App\Vereniging::with('gebruikers')->where('id', $id)->first();
+        $vereniging = \App\Vereniging::with('gebruikers')->where(['id'=> $id, 'actief'=>1])->first();
         return response()->json($vereniging);
     }
 
