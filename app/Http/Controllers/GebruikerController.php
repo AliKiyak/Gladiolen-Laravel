@@ -19,8 +19,9 @@
 
             if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
                 $user = Auth::user();
+                $rol = \App\Rol::find($user->rol_id)->first();
                 $vereniging = \App\Vereniging::where('hoofdverantwoordelijke', $user->id)->first();
-                if($vereniging->actief == 0) {
+                if($rol->naam == "Verantwoordelijke" && $vereniging->actief == 0) {
                     return response()->json(['error' => 'Uw vereniging is nog niet actief'], 444);
                 } else {
                     $success['token'] = $user->createToken('MyApp')->accessToken;
