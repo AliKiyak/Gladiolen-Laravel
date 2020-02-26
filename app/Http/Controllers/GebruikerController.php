@@ -165,7 +165,6 @@
         public function updateLid($id, Request $request)
         {
             $data = $request->all();
-            $data['wachtwoord'] =
             $gebruiker = \App\Gebruiker::find($id)->update($data);
 
             return response()->json($gebruiker);
