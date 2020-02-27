@@ -11,7 +11,7 @@ class VerenigingController extends Controller
 {
     public function index()
     {
-        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contact')->orderBy('id', 'desc')->get();
+        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contact')->orderBy('actief', 'desc')->orderBy('id', 'desc')->get();
         return response()->json($verenigings);
     }
 
@@ -23,7 +23,7 @@ class VerenigingController extends Controller
 
     public function getGeacepteerdeVerenigingen()
     {
-        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contact')->where('inAanvraag', 0)->orderBy('id', 'desc')->get();
+        $verenigings = \App\Vereniging::with('hoofd', 'tweede', 'contact')->where('inAanvraag', 0)->orderBy('actief', 'desc')->orderBy('id', 'desc')->get();
         return response()->json($verenigings);
     }
 
